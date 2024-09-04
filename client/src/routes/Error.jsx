@@ -1,7 +1,12 @@
 import { useEffect } from "react";
 import { useRouteError } from "react-router-dom";
 
-import errorImage from "../assets/images/musiteca-error_illustration.jpg";
+import { House } from "@phosphor-icons/react";
+
+import FooterRegular from "../components/footer/footer-regular.jsx";
+import LinkButton from "../components/button/link-button.jsx";
+
+import errorImage from "../assets/images/illustrations/musiteca-error_illustration.jpg";
 
 function Error() {
   const error = useRouteError();
@@ -21,7 +26,7 @@ function Error() {
               <br />
               Return to the home and explore other possibilities.
             </p>
-            <a href="/">Go back home</a>
+            <LinkButton href="/" icon={<House />} text="Go back home" />
           </div>
           <figure>
             <img
@@ -31,6 +36,7 @@ function Error() {
           </figure>
         </div>
       </main>
+      <FooterRegular light={false} />
     </>
   );
 }
