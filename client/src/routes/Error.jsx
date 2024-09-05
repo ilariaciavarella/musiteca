@@ -26,7 +26,12 @@ function Error() {
               <br />
               Return to the home and explore other possibilities.
             </p>
-            <LinkButton href="/" icon={<House />} text="Go back home" />
+            <LinkButton
+              href="/"
+              icon={<House size={28} color="#F9FAED" />}
+              text="Go back home"
+              type="primary"
+            />
           </div>
           <figure>
             <img
