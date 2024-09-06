@@ -7,6 +7,7 @@
   border-radius: 8px;
   min-height: 52px;
   width: fit-content;
+  color: inherit;
 }
 
 .btn-primary {
@@ -25,4 +26,5 @@
 }
 
 .btn-invisible {
+  border: none;
 }

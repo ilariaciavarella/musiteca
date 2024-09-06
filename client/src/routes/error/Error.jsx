@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useRouteError } from "react-router-dom";
 
-import { House } from "@phosphor-icons/react";
+import "./Error.scss";
 
-import FooterRegular from "../components/footer/footer-regular.jsx";
-import LinkButton from "../components/button/link-button.jsx";
+import FooterRegular from "../../components/footer/footer-regular.jsx";
+import LinkButton from "../../components/button/link-button.jsx";
 
-import errorImage from "../assets/images/illustrations/musiteca-error_illustration.jpg";
+import errorImage from "../../assets/images/illustrations/musiteca-error_illustration.png";
 
 function Error() {
   const error = useRouteError();
@@ -26,19 +26,14 @@ function Error() {
               <br />
               Return to the home and explore other possibilities.
             </p>
-            <LinkButton
-              href="/"
-              icon={<House size={28} color="#F9FAED" />}
-              text="Go back home"
-              type="primary"
-            />
+            <LinkButton href="/" text="Go back home" type="primary" />
           </div>
-          <figure>
-            <img
-              src={errorImage}
-              alt="Illustration of a computer that is not working"
-            />
-          </figure>
+          {/*<figure>*/}
+          {/*  <img*/}
+          {/*    src={errorImage}*/}
+          {/*    alt="Illustration of a computer that is not working"*/}
+          {/*  />*/}
+          {/*</figure>*/}
         </div>
       </main>
       <FooterRegular light={false} />

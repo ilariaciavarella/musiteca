@@ -3,3 +3,6 @@ $green: #E2EE00;
 $purple: #4930AA;
 $darkpurple: #120C2A;
 $midpurple: #2E1E6A;
+
+$darkpurple70: transparentize($darkpurple, 0.3);
+$ivory70: transparentize($ivory, 0.3);

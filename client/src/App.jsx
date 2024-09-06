@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./assets/styles/App.scss";
 
 import Root from "./routes/Root.jsx";
-import Error from "./routes/Error.jsx";
+import Error from "./routes/error/Error.jsx";
 import Login from "./routes/Login.jsx";
 
 const router = createBrowserRouter([
