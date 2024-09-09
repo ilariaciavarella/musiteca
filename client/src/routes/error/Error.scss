@@ -3,3 +3,45 @@
 body {
   background-color: variables.$green;
 }
+
+main {
+  padding: 2rem 1rem;
+}
+
+.musiteca-logo {
+   max-width: 17.5rem;
+   width: 100%;
+  margin-bottom: 2rem;
+ }
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 1.5rem;
+  align-items: center;
+
+  .error-msg {
+    margin-bottom: .5rem;
+  }
+
+  p:last-of-type {
+    margin-bottom: 2rem;
+  }
+
+  figure {
+    height: fit-content;
+  }
+
+  .error-image {
+     max-width: 100%;
+     display: block;
+   }
+}
+
+
+
+@media only screen and (min-width: 768px) {
+  main {
+    padding: 5rem 12.5rem;
+  }
+}
