@@ -4,7 +4,7 @@ import "./assets/styles/App.scss";
 
 import Root from "./routes/Root.jsx";
 import Error from "./routes/error/Error.jsx";
-import Login from "./routes/Login.jsx";
+import Login from "./routes/login/Login.jsx";
 
 const router = createBrowserRouter([
   {
