@@ -33,13 +33,7 @@
 }
 
 .social-links {
+  display: flex;
+  gap: .5rem;
   padding: 1rem .5rem;
-
-  & > a {
-    margin-right: 1.25rem;
-  }
-
-  & > a:last-of-type {
-    margin: 0;
-  }
 }

@@ -1,22 +1,9 @@
 import PropTypes from "prop-types";
-import styles from "./button.module.scss";
+import "./button.scss";
 
 function LinkButton(props) {
-  let listOfClasses = styles["btn"];
-  switch (props.type) {
-    case "primary":
-      listOfClasses += ` ${styles["btn-primary"]}`;
-      break;
-    case "secondary":
-      listOfClasses += ` ${styles["btn-secondary"]}`;
-      break;
-    case "invisible":
-      listOfClasses += ` ${styles["btn-invisible"]}`;
-      break;
-  }
-
   return (
-    <a href={props.href} target="_blank" className={listOfClasses}>
+    <a href={props.href} target="_blank" className={`btn btn-${props.type}`}>
       {props.icon}
       {props.text}
     </a>

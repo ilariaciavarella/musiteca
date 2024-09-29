@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 
-import "./Login.scss";
+import styles from "./Login.module.scss";
 import setBodyBgColor from "../../assets/utils/setBodyBgColour.js";
 import LogoLight from "../../assets/images/logo/musiteca-logo_light.svg";
 import FooterRegular from "../../components/footer/footer-regular.jsx";
 import LinkButton from "../../components/button/link-button.jsx";
+import ActionButton from "../../components/button/action-button.jsx";
 
 function Login(props) {
   useEffect(() => {
@@ -13,9 +14,13 @@ function Login(props) {
 
   return (
     <>
-      <main className="container">
+      <main className={styles["container"]}>
         <div>
-          <img src={LogoLight} alt="Musiteca Logo" className="musiteca-logo" />
+          <img
+            src={LogoLight}
+            alt="Musiteca Logo"
+            className={styles["musiteca-logo"]}
+          />
           <h1>The Library of Musical Instruments</h1>
           <p>
             <big>
@@ -27,7 +32,22 @@ function Login(props) {
         <div>
           <div>
             <h2>Sign in to Musiteca</h2>
-            <form></form>
+            <form>
+              <label>
+                Email
+                <input />
+              </label>
+              <label>
+                Password
+                <input />
+              </label>
+              <ActionButton text="Login" type="primary" />
+              <LinkButton
+                href="/forgot"
+                text="Forgot password?"
+                type="tertiary"
+              />
+            </form>
           </div>
           <div>
             <h4>Don’t have an account?</h4>

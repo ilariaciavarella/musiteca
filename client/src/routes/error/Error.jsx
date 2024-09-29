@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useRouteError } from "react-router-dom";
 
-import "./Error.scss";
+import styles from "./Error.module.scss";
 import setBodyBgColor from "../../assets/utils/setBodyBgColour.js";
 
 import FooterRegular from "../../components/footer/footer-regular.jsx";
@@ -20,11 +20,15 @@ function Error() {
 
   return (
     <>
-      <main className="container">
+      <main className={styles["container"]}>
         <div>
-          <img src={LogoDark} alt="Musiteca Logo" className="musiteca-logo" />
+          <img
+            src={LogoDark}
+            alt="Musiteca Logo"
+            className={styles["musiteca-logo"]}
+          />
           <h1>Oops, something went wrong...</h1>
-          <p className="error-msg">
+          <p className={styles["error-msg"]}>
             <small>{error.statusText || error.message}</small>
           </p>
           <p>
@@ -38,7 +42,7 @@ function Error() {
           <img
             src={errorImage}
             alt="Illustration of a record player with a broken vynil"
-            className="error-image"
+            className={styles["error-image"]}
           />
         </figure>
       </main>
