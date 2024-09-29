@@ -30,28 +30,39 @@ function Login(props) {
           </p>
         </div>
         <div>
-          <div>
+          <div className={styles["login-container"]}>
             <h2>Sign in to Musiteca</h2>
             <form>
-              <label>
-                Email
-                <input />
-              </label>
-              <label>
-                Password
-                <input />
-              </label>
-              <ActionButton text="Login" type="primary" />
-              <LinkButton
-                href="/forgot"
-                text="Forgot password?"
-                type="tertiary"
-              />
+              <div className={styles["input-element"]}>
+                <label htmlFor="email">Email</label>
+                <input type="email" name="email" placeholder="Email" required />
+              </div>
+              <div className={styles["input-element"]}>
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+
+              <ActionButton text="Login" type="primary-green" block={true} />
             </form>
+            <LinkButton
+              href="/forgot"
+              text="Forgot password?"
+              type="tertiary"
+            />
           </div>
-          <div>
+          <div className={styles["login-container"]}>
             <h4>Don’t have an account?</h4>
-            <LinkButton href={"/signup"} text={"Sign up"} type={"secondary"} />
+            <LinkButton
+              href="/signup"
+              text="Sign up"
+              type="secondary"
+              block={true}
+            />
           </div>
         </div>
       </main>

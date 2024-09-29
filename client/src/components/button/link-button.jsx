@@ -3,7 +3,15 @@ import "./button.scss";
 
 function LinkButton(props) {
   return (
-    <a href={props.href} target="_blank" className={`btn btn-${props.type}`}>
+    <a
+      href={props.href}
+      target="_blank"
+      className={
+        props.block
+          ? `btn btn-${props.type} btn-block`
+          : `btn btn-${props.type}`
+      }
+    >
       {props.icon}
       {props.text}
     </a>
@@ -15,6 +23,7 @@ LinkButton.propTypes = {
   icon: PropTypes.element,
   text: PropTypes.string,
   type: PropTypes.string,
+  block: PropTypes.bool,
 };
 
 export default LinkButton;

@@ -3,7 +3,14 @@ import "./button.scss";
 
 function ActionButton(props) {
   return (
-    <button onClick={props.action} className={`btn btn-${props.type}`}>
+    <button
+      onClick={props.action}
+      className={
+        props.block
+          ? `btn btn-${props.type} btn-block`
+          : `btn btn-${props.type}`
+      }
+    >
       {props.icon}
       {props.text}
     </button>
@@ -15,6 +22,7 @@ ActionButton.propTypes = {
   icon: PropTypes.element,
   text: PropTypes.string,
   type: PropTypes.string,
+  block: PropTypes.bool,
 };
 
 export default ActionButton;

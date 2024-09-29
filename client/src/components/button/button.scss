@@ -5,9 +5,9 @@
   font-weight: 600;
   font-size: 1rem;
   text-decoration: none;
-  border: 2px solid #120C2A;
+  border: 2px solid variables.$darkpurple;
   border-radius: 8px;
-  min-height: 52px;
+  min-height: 2.75rem;
   width: fit-content;
   color: inherit;
   display: flex;
@@ -16,11 +16,18 @@
   align-items: center;
   padding: 12px;
   gap: 8px;
+  cursor: pointer;
 }
 
-.btn-primary {
+.btn-primary-purple {
   background-color: variables.$purple;
   color: variables.$ivory;
+  box-shadow: 4px 4px 0 rgba(18, 12, 42, 0.25);
+}
+
+.btn-primary-green {
+  background-color: variables.$green;
+  color: variables.$darkpurple;
   box-shadow: 4px 4px 0 rgba(18, 12, 42, 0.25);
 }
 
@@ -32,8 +39,13 @@
 .btn-tertiary {
   border: none;
   text-decoration: underline;
+  font-weight: 600;
 }
 
 .btn-invisible {
   border: none;
+}
+
+.btn-block {
+  width: 100%;
 }

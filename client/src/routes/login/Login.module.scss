@@ -16,8 +16,43 @@
   align-items: center;
 }
 
+.login-container {
+  background-color: variables.$midpurple;
+  border: 2px solid variables.$darkpurple;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+
+  form {
+    width: 100%;
+  }
+}
+
+.input-element {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+  gap: .5rem;
+
+  input {
+    border: 2px solid variables.$darkpurple;
+    border-radius: 8px;
+    min-height: 2.5rem;
+    padding: 1rem;
+    font-family: inherit;
+    font-size: inherit;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .container {
     padding: 5rem 12.5rem;
+  }
+
+  .login-container {
+    padding: 2.5rem;
   }
 }

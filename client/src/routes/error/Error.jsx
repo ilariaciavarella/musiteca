@@ -36,7 +36,7 @@ function Error() {
             <br />
             Return to the home and explore other possibilities.
           </p>
-          <LinkButton href="/" text="Go back home" type="primary" />
+          <LinkButton href="/" text="Go back home" type="primary-purple" />
         </div>
         <figure>
           <img
