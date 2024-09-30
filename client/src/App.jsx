@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ConfigProvider } from "antd";
 
 import "./assets/styles/App.scss";
 
@@ -21,9 +22,22 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: "#4930AA",
+          fontFamily: "'Public Sans', sans-serif, system-ui",
+        },
+        components: {
+          Button: {
+            fontWeight: 600,
+            lineWidth: 2,
+          },
+        },
+      }}
+    >
       <RouterProvider router={router} />
-    </>
+    </ConfigProvider>
   );
 }
 

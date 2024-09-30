@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useRouteError } from "react-router-dom";
+import { Button } from "antd";
 
 import styles from "./Error.module.scss";
 import setBodyBgColor from "../../assets/utils/setBodyBgColour.js";
@@ -36,6 +37,9 @@ function Error() {
             <br />
             Return to the home and explore other possibilities.
           </p>
+          <Button type="primary" size="large">
+            Go back home
+          </Button>
           <LinkButton href="/" text="Go back home" type="primary-purple" />
         </div>
         <figure>
