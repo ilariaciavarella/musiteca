@@ -5,7 +5,7 @@ import { Button } from "antd";
 import styles from "./Error.module.scss";
 import setBodyBgColor from "../../assets/utils/setBodyBgColour.js";
 
-import FooterRegular from "../../components/footer/footer-regular.jsx";
+import MusitecaFooter from "../../components/footer/MusitecaFooter.jsx";
 
 import errorImage from "../../assets/images/illustrations/musiteca-error_illustration.png";
 import LogoDark from "../../assets/images/logo/musiteca-logo_dark.svg";
@@ -48,7 +48,7 @@ function Error() {
           />
         </figure>
       </main>
-      <FooterRegular light={false} />
+      <MusitecaFooter light={false} />
     </>
   );
 }

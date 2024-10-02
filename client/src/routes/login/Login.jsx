@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import styles from "./Login.module.scss";
 import setBodyBgColor from "../../assets/utils/setBodyBgColour.js";
 import LogoLight from "../../assets/images/logo/musiteca-logo_light.svg";
-import FooterRegular from "../../components/footer/footer-regular.jsx";
+import MusitecaFooter from "../../components/footer/MusitecaFooter.jsx";
 
 function Login(props) {
   useEffect(() => {
@@ -51,7 +51,7 @@ function Login(props) {
           </div>
         </div>
       </main>
-      <FooterRegular light={true} />
+      <MusitecaFooter light={true} />
     </>
   );
 }

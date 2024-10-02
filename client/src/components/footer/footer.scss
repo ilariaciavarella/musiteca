@@ -1,23 +1,13 @@
 @use '../../assets/styles/variables';
 
-.footer-regular {
-  min-height: 6rem;
+.footer {
   border-top: 1.5px solid variables.$darkpurple;
-  padding: 1rem;
+  padding: 2rem 1rem;
   color: variables.$darkpurple70;
-  text-align: center;
+  background: none;
 }
 
 .footer-light {
   color: variables.$ivory70;
   border-top-color: variables.$ivory;
-}
-
-.footer-logo {
-  max-width: 10rem;
-  width: 100%;
-}
-
-.social-links {
-  padding: 1rem .5rem;
 }
