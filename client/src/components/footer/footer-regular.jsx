@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import { LinkedinLogo, InstagramLogo, GithubLogo } from "@phosphor-icons/react";
+import { Button } from "antd";
 
 import "./footer.scss";
-import LinkButton from "../button/link-button.jsx";
 
 import LogoLight from "../../assets/images/logo/musiteca-logo_light.svg";
 import LogoDark from "../../assets/images/logo/musiteca-logo_dark.svg";
@@ -19,20 +19,20 @@ function FooterRegular(props) {
         </small>
       </div>
       <div className="social-links">
-        <LinkButton
+        <Button
           href="https://www.linkedin.com/in/ilaria-ciavarella"
           icon={<LinkedinLogo size={28} />}
-          type="invisible"
+          type="link"
         />
-        <LinkButton
+        <Button
           href="https://github.com/ilariaciavarella"
           icon={<GithubLogo size={28} />}
-          type="invisible"
+          type="link"
         />
-        <LinkButton
+        <Button
           href="https://www.instagram.com/lil.ciavarella/"
           icon={<InstagramLogo size={28} />}
-          type="invisible"
+          type="link"
         />
       </div>
     </footer>

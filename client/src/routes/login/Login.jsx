@@ -4,8 +4,6 @@ import styles from "./Login.module.scss";
 import setBodyBgColor from "../../assets/utils/setBodyBgColour.js";
 import LogoLight from "../../assets/images/logo/musiteca-logo_light.svg";
 import FooterRegular from "../../components/footer/footer-regular.jsx";
-import LinkButton from "../../components/button/link-button.jsx";
-import ActionButton from "../../components/button/action-button.jsx";
 
 function Login(props) {
   useEffect(() => {
@@ -46,23 +44,10 @@ function Login(props) {
                   required
                 />
               </div>
-
-              <ActionButton text="Login" type="primary-green" block={true} />
             </form>
-            <LinkButton
-              href="/forgot"
-              text="Forgot password?"
-              type="tertiary"
-            />
           </div>
           <div className={styles["login-container"]}>
             <h4>Don’t have an account?</h4>
-            <LinkButton
-              href="/signup"
-              text="Sign up"
-              type="secondary"
-              block={true}
-            />
           </div>
         </div>
       </main>

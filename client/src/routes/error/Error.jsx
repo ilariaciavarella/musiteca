@@ -6,7 +6,6 @@ import styles from "./Error.module.scss";
 import setBodyBgColor from "../../assets/utils/setBodyBgColour.js";
 
 import FooterRegular from "../../components/footer/footer-regular.jsx";
-import LinkButton from "../../components/button/link-button.jsx";
 
 import errorImage from "../../assets/images/illustrations/musiteca-error_illustration.png";
 import LogoDark from "../../assets/images/logo/musiteca-logo_dark.svg";
@@ -37,10 +36,9 @@ function Error() {
             <br />
             Return to the home and explore other possibilities.
           </p>
-          <Button type="primary" size="large">
+          <Button type="primary" href="/" className="btn">
             Go back home
           </Button>
-          <LinkButton href="/" text="Go back home" type="primary-purple" />
         </div>
         <figure>
           <img
