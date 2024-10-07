@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useRouteError } from "react-router-dom";
-import { Button } from "antd";
+import { Layout, Row, Col, Button } from "antd";
+
+const { Content } = Layout;
 
 import styles from "./Error.module.scss";
-import setBodyBgColor from "../../assets/utils/setBodyBgColour.js";
 
 import MusitecaFooter from "../../components/footer/MusitecaFooter.jsx";
 
@@ -14,42 +15,48 @@ function Error() {
   const error = useRouteError();
 
   useEffect(() => {
-    setBodyBgColor("#E2EE00");
     console.log(error);
   }, [error]);
 
   return (
-    <>
-      <main className={styles["container"]}>
-        <div>
-          <img
-            src={LogoDark}
-            alt="Musiteca Logo"
-            className={styles["musiteca-logo"]}
-          />
-          <h1>Oops, something went wrong...</h1>
-          <p className={styles["error-msg"]}>
-            <small>{error.statusText || error.message}</small>
-          </p>
-          <p>
-            Sorry, an unexpected error has occurred.
-            <br />
-            Return to the home and explore other possibilities.
-          </p>
-          <Button type="primary" href="/" className="btn">
-            Go back home
-          </Button>
-        </div>
-        <figure>
-          <img
-            src={errorImage}
-            alt="Illustration of a record player with a broken vynil"
-            className={styles["error-image"]}
-          />
-        </figure>
-      </main>
+    <Layout style={{ backgroundColor: "#E2EE00" }}>
+      <Content className={styles["container"]}>
+        <Row
+          gutter={16}
+          align="middle"
+          justify="center"
+          className={styles["container-row"]}
+        >
+          <Col xs={24} md={12} lg={8}>
+            <img
+              src={LogoDark}
+              alt="Musiteca Logo"
+              className={styles["musiteca-logo"]}
+            />
+            <h1>Oops, something went wrong...</h1>
+            <p className={styles["error-msg"]}>
+              <small>{error.statusText || error.message}</small>
+            </p>
+            <p>
+              Sorry, an unexpected error has occurred.
+              <br />
+              Return to the home and explore other possibilities.
+            </p>
+            <Button type="primary" href="/" className="btn">
+              Go back home
+            </Button>
+          </Col>
+          <Col xs={24} md={12} lg={8}>
+            <img
+              src={errorImage}
+              alt="Illustration of a record player with a broken vynil"
+              className={styles["error-image"]}
+            />
+          </Col>
+        </Row>
+      </Content>
       <MusitecaFooter light={false} />
-    </>
+    </Layout>
   );
 }
 

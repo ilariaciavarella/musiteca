@@ -3,16 +3,16 @@
 .musiteca-logo {
    max-width: 17.5rem;
    width: 100%;
-  margin-bottom: 2rem;
+   margin-bottom: 2rem;
  }
 
 .container {
   padding: 2rem 1rem;
-  flex-grow: 1;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  gap: 1.5rem;
-  align-items: center;
+  display: flex;
+
+  .container-row {
+    flex-grow: 1;
+  }
 
   .error-msg {
     margin-bottom: .5rem;
@@ -30,10 +30,4 @@
      max-width: 100%;
      display: block;
    }
-}
-
-@media only screen and (min-width: 768px) {
-  .container {
-    padding: 5rem 12.5rem;
-  }
 }

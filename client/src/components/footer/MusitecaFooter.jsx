@@ -18,6 +18,7 @@ function MusitecaFooter(props) {
             href="https://www.linkedin.com/in/ilaria-ciavarella"
             icon={<LinkedinLogo size={28} />}
             type="link"
+            color={props.light ? "default" : "primary"}
           />
           <Button
             href="https://github.com/ilariaciavarella"
