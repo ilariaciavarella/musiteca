@@ -28,7 +28,6 @@ function App() {
   useEffect(() => {
     window.addEventListener("resize", () => {
       setFontSize((0.390625 * window.innerWidth) / 100 + 13);
-      console.log(fontSize);
     });
   }, []);
 
@@ -37,8 +36,10 @@ function App() {
       theme={{
         token: {
           colorPrimary: "#4930AA",
-          colorTextBase: "#120C2A",
+          colorText: "#120C2A",
           colorBgBase: "#F9FAED",
+          colorError: "#CE1C4B",
+          colorLink: "#2E1E6A",
           fontFamily: "'Public Sans', sans-serif, system-ui",
           fontSize: fontSize,
           borderRadius: 8,
@@ -47,6 +48,7 @@ function App() {
           Button: {
             contentFontSize: fontSize,
             contentFontSizeLG: fontSize + 4,
+            defaultBg: "none",
             defaultShadow: "4px 4px 0 rgba(0, 0, 0, 0.25)",
             fontWeight: 600,
             primaryShadow: "4px 4px 0 rgba(0, 0, 0, 0.25)",
@@ -54,9 +56,15 @@ function App() {
             controlHeightLG: 52,
             controlHeightSM: 40,
             lineWidth: 2,
-            colorLink: "#4930AA",
-            colorLinkActive: "#2E1E6A",
-            colorLinkHover: "#7760D2",
+          },
+          Input: {
+            controlHeight: 48,
+            controlHeightLG: 52,
+            controlHeightSM: 40,
+            colorBorder: "#120C2A",
+            colorBgContainer: "rgba(249,250,237,0.7)",
+            colorTextPlaceholder: "rgba(18, 12, 42, 0.5)",
+            colorText: "#120C2A",
           },
         },
       }}

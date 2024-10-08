@@ -1,57 +1,41 @@
 @use '../../assets/styles/variables';
 
 .musiteca-logo {
-  max-width: 17.5rem;
+  max-width: 15rem;
   width: 100%;
   margin-bottom: 2rem;
 }
 
 .container {
-  color: variables.$ivory;
   padding: 2rem 1rem;
-  flex-grow: 1;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  gap: 1.5rem;
-  align-items: center;
 }
 
 .login-container {
   background-color: variables.$midpurple;
   border: 2px solid variables.$darkpurple;
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 1.5rem;
   margin-bottom: 1.25rem;
 
-  form {
-    width: 100%;
+  h2, h4 {
+    text-align: center;
+  }
+
+  .login-input {
+    border-width: 2px;
   }
 }
 
-.input-element {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1.25rem;
-  gap: .5rem;
+.login-button {
+  margin-top: 2rem;
+}
 
-  input {
-    border: 2px solid variables.$darkpurple;
-    border-radius: 8px;
-    min-height: 2.5rem;
-    padding: 1rem;
-    font-family: inherit;
-    font-size: inherit;
-  }
+.login-image {
+  max-width: 100%;
+  display: block;
 }
 
 @media only screen and (min-width: 768px) {
-  .container {
-    padding: 5rem 12.5rem;
-  }
-
   .login-container {
     padding: 2.5rem;
   }

@@ -22,12 +22,12 @@ function Error() {
     <Layout style={{ backgroundColor: "#E2EE00" }}>
       <Content className={styles["container"]}>
         <Row
-          gutter={16}
+          gutter={24}
           align="middle"
           justify="center"
           className={styles["container-row"]}
         >
-          <Col xs={24} md={12} lg={8}>
+          <Col xs={24} md={12} xl={10}>
             <img
               src={LogoDark}
               alt="Musiteca Logo"
@@ -46,7 +46,7 @@ function Error() {
               Go back home
             </Button>
           </Col>
-          <Col xs={24} md={12} lg={8}>
+          <Col xs={24} md={12} xl={10}>
             <img
               src={errorImage}
               alt="Illustration of a record player with a broken vynil"
