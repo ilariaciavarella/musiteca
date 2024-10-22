@@ -13,5 +13,5 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Role {
     @Id
     private ObjectId id;
-    private String role;
+    private String name;
 }
