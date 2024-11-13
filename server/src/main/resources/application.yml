@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: server
+
+  data:
+    mongodb:
+      database: ${MONGODB_DATABASE}
+      uri: mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@${MONGODB_CLUSTER}
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9000
+          audiences: musiteca-client
+
+logging:
+  level:
+    org.springframework.security: TRACE
+
+jwt:
+  secret: ${JWT_SECRET}
+
+security:
+  jwt:
+    secret-key: ${JWT_SECRET_KEY}
+    expiration-time: 86400000

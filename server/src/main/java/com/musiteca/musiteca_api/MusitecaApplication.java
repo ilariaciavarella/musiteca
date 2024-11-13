@@ -1,5 +1,6 @@
 package com.musiteca.musiteca_api;
 
+import com.musiteca.musiteca_api.post.service.PostService;
 import com.musiteca.musiteca_api.user.model.MusitecaUser;
 import com.musiteca.musiteca_api.user.model.Role;
 import com.musiteca.musiteca_api.user.service.UserService;
@@ -26,11 +27,16 @@ public class MusitecaApplication {
 //			userService.saveRole(new Role(null,"ROLE_SUPER_ADMIN"));
 //
 //			userService.saveUser(new MusitecaUser(null, "Ilaria", "Ciavarella", "ila.ciava@gmail.com", "password", new HashSet<>()));
-//			userService.saveUser(new MusitecaUser(null, "Maria", "Tambuzzo", "mt.craft@hotmail.it", "password2", new HashSet<>()));
 //
 //			userService.addRoleToUser("ila.ciava@gmail.com", "ROLE_USER");
 //			userService.addRoleToUser("ila.ciava@gmail.com", "ROLE_ADMIN");
-//			userService.addRoleToUser("mt.craft@hotmail.it", "ROLE_USER");
+//		};
+//	}
+
+//	@Bean
+//	CommandLineRunner run(PostService postService) {
+//		return args -> {
+//			postService.createPost("ila.ciava@gmail.com", "Ciao a tutti", "Torino", "Tromba", "Tomahnn");
 //		};
 //	}
 

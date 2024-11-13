@@ -2,6 +2,7 @@ package com.musiteca.musiteca_api.post.service;
 
 import com.musiteca.musiteca_api.post.model.Post;
 import com.musiteca.musiteca_api.post.repository.PostRepository;
+import com.musiteca.musiteca_api.user.model.MusitecaUser;
 import com.musiteca.musiteca_api.user.repository.UserRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,22 +19,27 @@ public class PostService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<Post> getAllPosts(){
+    public Iterable<Post> findAllPosts(){
         return postRepository.findAll();
     }
 
-    public Optional<Post> getPostById(ObjectId id){
+    public Optional<Post> findPostById(ObjectId id){
         return postRepository.findById(id);
     }
 
-    public Post createPost(String author, String body, String location, String instrument, String brand){
-        return postRepository.insert(new Post(
-                null,
-                userRepository.findByEmail(author),
-                body,
-                location,
-                instrument,
-                brand,
-                true));
+    public Post savePost(String authorEmail, String body, String location, String instrument, String brand){
+        MusitecaUser authorUser = userRepository.findByEmail(authorEmail).orElseThrow();
+
+        return postRepository.insert(
+                new Post(
+                        null,
+                        authorUser,
+                        body,
+                        location,
+                        instrument,
+                        brand,
+                        true
+                        )
+        );
     }
 }
