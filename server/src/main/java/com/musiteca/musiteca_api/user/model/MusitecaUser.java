@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Document(collection = "users") @Data
@@ -26,6 +25,14 @@ public class MusitecaUser implements UserDetails {
     private String password;
     @DBRef
     private Set<Role> roles = new HashSet<>();
+
+    public MusitecaUser(String firstName, String lastName, String email, String password, Role role) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.roles.add(role);
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -55,5 +62,9 @@ public class MusitecaUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public void setRoles(Role role) {
+        this.roles.add(role);
     }
 }

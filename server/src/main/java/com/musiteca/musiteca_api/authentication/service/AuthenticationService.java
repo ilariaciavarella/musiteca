@@ -16,21 +16,22 @@ public class AuthenticationService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
+    private final RoleRepository roleRepository;
 
     public AuthenticationService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
+        this.roleRepository = roleRepository;
     }
 
     public MusitecaUser signUp (RegisterUserDto input) {
         MusitecaUser user = new MusitecaUser(
-                null,
                 input.getFirstName(),
                 input.getLastName(),
                 input.getEmail(),
                 passwordEncoder.encode(input.getPassword()),
-                null
+                roleRepository.findByRoleName("ROLE_USER")
         );
 
         return userRepository.save(user);
