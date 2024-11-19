@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -32,16 +33,15 @@ public class UserController {
     }
 
     @GetMapping("/me")
-    public ResponseEntity<MusitecaUser> getAuthenticatedUser() {
+    public ResponseEntity<MusitecaUser> getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         MusitecaUser currentUser = (MusitecaUser) authentication.getPrincipal();
         return new ResponseEntity<>(currentUser, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MusitecaUser> getUserById(@PathVariable ObjectId id) {
-        MusitecaUser user = userRepository.findById(id).orElseThrow();
-        return new ResponseEntity<>(user, HttpStatus.OK);
+    public ResponseEntity<Optional<MusitecaUser>> getUserById(@PathVariable ObjectId id) {
+        return new ResponseEntity<>(userRepository.findById(id), HttpStatus.OK);
     }
 
 }

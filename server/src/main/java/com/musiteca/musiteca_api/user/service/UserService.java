@@ -6,8 +6,6 @@ import com.musiteca.musiteca_api.user.repository.RoleRepository;
 import com.musiteca.musiteca_api.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -59,6 +57,4 @@ public class UserService implements UserServiceInterface {
         log.info("Fetching all users");
         return userRepository.findAll();
     }
-
-
 }

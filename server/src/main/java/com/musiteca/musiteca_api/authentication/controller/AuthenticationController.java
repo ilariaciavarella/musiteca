@@ -37,7 +37,7 @@ public class AuthenticationController {
         loginResponse.setToken(jwtToken);
         loginResponse.setExpiresIn(jwtService.getExpirationTime());
 
-        return new ResponseEntity<LoginResponse>(loginResponse, HttpStatus.OK);
+        return new ResponseEntity<LoginResponse>(loginResponse, HttpStatus.ACCEPTED);
     }
 
 }

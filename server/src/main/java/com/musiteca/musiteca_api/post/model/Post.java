@@ -25,4 +25,6 @@ public class Post {
     private String instrument;
     private String brand;
     private Boolean available;
+    @DBRef
+    private MusitecaUser borrowedBy;
 }

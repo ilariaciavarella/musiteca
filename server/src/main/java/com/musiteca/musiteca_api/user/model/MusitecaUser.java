@@ -1,5 +1,6 @@
 package com.musiteca.musiteca_api.user.model;
 
+import com.musiteca.musiteca_api.post.model.Post;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,8 @@ public class MusitecaUser implements UserDetails {
     private String password;
     @DBRef
     private Set<Role> roles = new HashSet<>();
+    @DBRef
+    private Set<Post> instruments = new HashSet<>();
 
     public MusitecaUser(String firstName, String lastName, String email, String password, Role role) {
         this.firstName = firstName;
@@ -62,9 +65,5 @@ public class MusitecaUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    public void setRoles(Role role) {
-        this.roles.add(role);
     }
 }

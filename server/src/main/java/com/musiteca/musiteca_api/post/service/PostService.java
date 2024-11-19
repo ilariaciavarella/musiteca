@@ -2,44 +2,29 @@ package com.musiteca.musiteca_api.post.service;
 
 import com.musiteca.musiteca_api.post.model.Post;
 import com.musiteca.musiteca_api.post.repository.PostRepository;
-import com.musiteca.musiteca_api.user.model.MusitecaUser;
-import com.musiteca.musiteca_api.user.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
-@Service
+@Service @RequiredArgsConstructor @Slf4j
 public class PostService {
-
-    @Autowired
-    private PostRepository postRepository;
-    @Autowired
-    private UserRepository userRepository;
+    private final PostRepository postRepository;
 
     public Iterable<Post> findAllPosts(){
+        log.info("Fetching all posts");
         return postRepository.findAll();
     }
 
     public Optional<Post> findPostById(ObjectId id){
+        log.info("Fetching post with id {}", id);
         return postRepository.findById(id);
     }
 
-    public Post savePost(String authorEmail, String body, String location, String instrument, String brand){
-        MusitecaUser authorUser = userRepository.findByEmail(authorEmail).orElseThrow();
-
-        return postRepository.insert(
-                new Post(
-                        null,
-                        authorUser,
-                        body,
-                        location,
-                        instrument,
-                        brand,
-                        true
-                        )
-        );
+    public Post savePost(Post post){
+        log.info("Saving new post");
+        return postRepository.save(post);
     }
 }
