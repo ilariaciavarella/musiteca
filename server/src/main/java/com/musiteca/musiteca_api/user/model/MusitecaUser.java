@@ -1,6 +1,8 @@
 package com.musiteca.musiteca_api.user.model;
 
-import com.musiteca.musiteca_api.post.model.Post;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,16 +22,16 @@ import java.util.Set;
 public class MusitecaUser implements UserDetails {
     @Id
     private ObjectId id;
+    @NotBlank
     private String firstName;
+    @NotBlank
     private String lastName;
+    @Email
     private String email;
+    @Size(min = 8)
     private String password;
     @DBRef
     private Set<Role> roles = new HashSet<>();
-    @DBRef
-    private Set<Post> publishedPosts = new HashSet<>();
-    @DBRef
-    private Set<Post> borrowedInstruments = new HashSet<>();
 
     public MusitecaUser(String firstName, String lastName, String email, String password, Role role) {
         this.firstName = firstName;

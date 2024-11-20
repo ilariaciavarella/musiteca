@@ -4,6 +4,7 @@ import com.musiteca.musiteca_api.user.model.MusitecaUser;
 import com.musiteca.musiteca_api.user.model.Role;
 import com.musiteca.musiteca_api.user.repository.RoleRepository;
 import com.musiteca.musiteca_api.user.repository.UserRepository;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,13 +18,13 @@ public class UserService implements UserServiceInterface {
     private final RoleRepository roleRepository;
 
     @Override
-    public MusitecaUser saveUser(MusitecaUser user) {
+    public MusitecaUser saveUser(@Valid MusitecaUser user) {
         log.info("Saving user: {}", user.getEmail());
         return userRepository.save(user);
     }
 
     @Override
-    public Role saveRole(Role role) {
+    public Role saveRole(@Valid Role role) {
         log.info("Saving role: {}", role.getRoleName());
         return roleRepository.save(role);
     }

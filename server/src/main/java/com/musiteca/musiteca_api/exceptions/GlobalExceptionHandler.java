@@ -1,11 +1,13 @@
-package com.musiteca.musiteca_api.authentication.exceptions;
+package com.musiteca.musiteca_api.exceptions;
 
 import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.JwtException;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ProblemDetail;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.AccountStatusException;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -53,6 +55,11 @@ public class GlobalExceptionHandler {
             errorDetail.setProperty("description", "Expired JWT");
 
             return errorDetail;
+        }
+
+        if (e instanceof MethodArgumentNotValidException) {
+            errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(403), e.getMessage());
+            errorDetail.setProperty("description", "Invalid input provided");
         }
 
         if (e == null) {

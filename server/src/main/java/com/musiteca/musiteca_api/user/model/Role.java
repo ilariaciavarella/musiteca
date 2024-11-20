@@ -1,5 +1,6 @@
 package com.musiteca.musiteca_api.user.model;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ import org.springframework.security.core.GrantedAuthority;
 public class Role implements GrantedAuthority {
     @Id
     private ObjectId id;
+    @NotBlank
     private String roleName;
 
     @Override

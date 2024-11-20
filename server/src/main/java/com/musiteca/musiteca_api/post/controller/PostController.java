@@ -3,6 +3,7 @@ package com.musiteca.musiteca_api.post.controller;
 import com.musiteca.musiteca_api.post.model.Post;
 import com.musiteca.musiteca_api.post.service.PostService;
 import com.musiteca.musiteca_api.user.model.MusitecaUser;
+import jakarta.validation.Valid;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,7 +32,7 @@ public class PostController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Post> createPost(@RequestBody Post post) {
+    public ResponseEntity<Post> createPost(@RequestBody @Valid Post post) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         MusitecaUser currentAuthor = (MusitecaUser) authentication.getPrincipal();
 
