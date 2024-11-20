@@ -2,6 +2,7 @@ package com.musiteca.musiteca_api.post.service;
 
 import com.musiteca.musiteca_api.post.model.Post;
 import com.musiteca.musiteca_api.post.repository.PostRepository;
+import com.musiteca.musiteca_api.user.model.MusitecaUser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
@@ -23,8 +24,27 @@ public class PostService {
         return postRepository.findById(id);
     }
 
+    public Iterable<Post> findPostByAuthor(MusitecaUser user){
+        log.info("Fetching post by author {}", user.getEmail());
+        return postRepository.findByAuthor(user);
+    }
+
     public Post savePost(Post post){
         log.info("Saving new post");
+        return postRepository.save(post);
+    }
+
+    public Post assignPostToUser(Post post, MusitecaUser user){
+        log.info("Assigning post to user {}", user.getEmail());
+        post.setBorrowedBy(user);
+        post.setAvailable(false);
+        return postRepository.save(post);
+    }
+
+    public Post releasePost(Post post){
+        log.info("Returning instrument to owner");
+        post.setAvailable(true);
+        post.setBorrowedBy(null);
         return postRepository.save(post);
     }
 }

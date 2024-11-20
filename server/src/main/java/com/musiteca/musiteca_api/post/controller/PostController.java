@@ -34,8 +34,30 @@ public class PostController {
     public ResponseEntity<Post> createPost(@RequestBody Post post) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         MusitecaUser currentAuthor = (MusitecaUser) authentication.getPrincipal();
+
         post.setAuthor(currentAuthor);
         post.setAvailable(true);
+
         return new ResponseEntity<>(postService.savePost(post), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}/borrow")
+    public ResponseEntity<Post> borrowInstrument(@PathVariable ObjectId id) {
+        Post post = postService.findPostById(id).orElseThrow();
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        MusitecaUser borrowingUser = (MusitecaUser) authentication.getPrincipal();
+
+        return new ResponseEntity<>(postService.assignPostToUser(post, borrowingUser), HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}/return")
+    public ResponseEntity<Post> returnInstrument(@PathVariable ObjectId id) {
+        Post post = postService.findPostById(id).orElseThrow();
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        MusitecaUser borrowingUser = (MusitecaUser) authentication.getPrincipal();
+
+        return new ResponseEntity<>(postService.releasePost(post), HttpStatus.OK);
     }
 }

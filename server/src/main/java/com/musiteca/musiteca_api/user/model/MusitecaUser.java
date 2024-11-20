@@ -27,7 +27,9 @@ public class MusitecaUser implements UserDetails {
     @DBRef
     private Set<Role> roles = new HashSet<>();
     @DBRef
-    private Set<Post> instruments = new HashSet<>();
+    private Set<Post> publishedPosts = new HashSet<>();
+    @DBRef
+    private Set<Post> borrowedInstruments = new HashSet<>();
 
     public MusitecaUser(String firstName, String lastName, String email, String password, Role role) {
         this.firstName = firstName;
