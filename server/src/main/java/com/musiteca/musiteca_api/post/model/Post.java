@@ -2,7 +2,6 @@ package com.musiteca.musiteca_api.post.model;
 
 import com.musiteca.musiteca_api.user.model.MusitecaUser;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,11 +18,10 @@ import java.util.Set;
 public class Post {
     @Id
     private ObjectId id;
-    @DBRef @NotNull
+    @DBRef
     private MusitecaUser author;
     @NotBlank
     private String body;
-    private String location;
 //    private Set<URL> images;
     @NotBlank
     private String instrument;

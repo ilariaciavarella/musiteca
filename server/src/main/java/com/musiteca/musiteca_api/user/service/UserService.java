@@ -58,12 +58,4 @@ public class UserService implements UserServiceInterface {
         log.info("Fetching all users");
         return userRepository.findAll();
     }
-
-//    public void borrowInstrument(ObjectId postId, MusitecaUser user) {
-//        Post post = postRepository.findById(postId).orElseThrow();
-//        log.info("Borrowing {} from {}", post.getInstrument(), post.getAuthor().getFirstName());
-//        user.getInstruments().add(post);
-//        post.borrow(user);
-//        userRepository.save(user);
-//    }
 }

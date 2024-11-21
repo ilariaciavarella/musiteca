@@ -16,5 +16,7 @@ public class RegisterUserDto {
     private String firstName;
     @NotBlank(message = "Please, provide your last name")
     private String lastName;
+    @NotBlank(message = "Please, insert your location")
+    private String location;
 
 }

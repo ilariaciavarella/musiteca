@@ -30,14 +30,17 @@ public class MusitecaUser implements UserDetails {
     private String email;
     @Size(min = 8)
     private String password;
+    @NotBlank
+    private String location;
     @DBRef
     private Set<Role> roles = new HashSet<>();
 
-    public MusitecaUser(String firstName, String lastName, String email, String password, Role role) {
+    public MusitecaUser(String firstName, String lastName, String email, String password, String location, Role role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.location = location;
         this.roles.add(role);
     }
 

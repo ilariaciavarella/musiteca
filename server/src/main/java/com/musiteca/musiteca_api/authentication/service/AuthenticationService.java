@@ -31,6 +31,7 @@ public class AuthenticationService {
                 input.getLastName(),
                 input.getEmail(),
                 passwordEncoder.encode(input.getPassword()),
+                input.getLocation(),
                 roleRepository.findByRoleName("ROLE_USER")
         );
 

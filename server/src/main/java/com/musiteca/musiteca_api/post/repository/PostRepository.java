@@ -10,5 +10,4 @@ import org.springframework.stereotype.Repository;
 public interface PostRepository extends MongoRepository<Post, ObjectId> {
     Iterable<Post> findByAuthor(MusitecaUser user);
     Iterable<Post> findByInstrument(String instrument);
-    Iterable<Post> findByLocation(String location);
 }
