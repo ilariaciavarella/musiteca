@@ -5,7 +5,10 @@ import "./assets/styles/App.scss";
 
 import Root from "./routes/Root.jsx";
 import Error from "./routes/error/Error.jsx";
-import Login from "./routes/login/Login.jsx";
+import Login from "./routes/auth/login/Login.jsx";
+import Auth from "./routes/auth/Auth.jsx";
+import SignUp from "./routes/auth/sign-up/SignUp.jsx";
+
 import { useEffect, useState } from "react";
 
 const router = createBrowserRouter([
@@ -15,9 +18,19 @@ const router = createBrowserRouter([
     errorElement: <Error />,
   },
   {
-    path: "/api/login",
-    element: <Login />,
+    path: "/auth",
+    element: <Auth />,
     errorElement: <Error />,
+    children: [
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "sign-up",
+        element: <SignUp />,
+      },
+    ],
   },
 ]);
 
