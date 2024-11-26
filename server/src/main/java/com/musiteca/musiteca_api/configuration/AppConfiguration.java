@@ -1,4 +1,4 @@
-package com.musiteca.musiteca_api.authentication.configuration;
+package com.musiteca.musiteca_api.configuration;
 
 import com.musiteca.musiteca_api.user.repository.UserRepository;
 import org.springframework.context.annotation.Bean;
