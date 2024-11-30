@@ -19,16 +19,19 @@ function MusitecaFooter(props) {
             icon={<LinkedinLogo size={28} />}
             type="link"
             color={props.light ? "default" : "primary"}
+            className="btn-invisible"
           />
           <Button
             href="https://github.com/ilariaciavarella"
             icon={<GithubLogo size={28} />}
             type="link"
+            className="btn-invisible"
           />
           <Button
             href="https://www.instagram.com/lil.ciavarella/"
             icon={<InstagramLogo size={28} />}
             type="link"
+            className="btn-invisible"
           />
         </Space>
       </Flex>

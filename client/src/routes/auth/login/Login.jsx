@@ -4,7 +4,7 @@ import styles from "../Auth.module.scss";
 import axios from "axios";
 import { useState } from "react";
 
-function Login(props) {
+function Login() {
   const [isValid, setIsValid] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -90,7 +90,12 @@ function Login(props) {
             </Button>
           </Form.Item>
           <Form.Item>
-            <Button block type="link" href="/forgot-password">
+            <Button
+              block
+              type="link"
+              href="/forgot-password"
+              className="btn-invisible"
+            >
               Forgot password?
             </Button>
           </Form.Item>

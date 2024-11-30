@@ -24,6 +24,7 @@
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Quicksand", sans-serif, system-ui;
+  text-wrap: pretty;
 }
 
 h1 {
@@ -58,4 +59,12 @@ p {
   border: 2px solid variables.$ivory;
   color: variables.$ivory;
   text-decoration: none;
+}
+
+.btn-invisible {
+  border: none;
+}
+
+.ant-modal-content.modal-content {
+  border: 2px solid variables.$darkpurple;
 }

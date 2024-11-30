@@ -1,11 +1,13 @@
 import styles from "../Auth.module.scss";
-import { Button, Form, Input, Row, Col, Alert } from "antd";
+import { Button, Form, Input, Row, Col, Alert, Modal } from "antd";
 import axios from "axios";
 import { useState } from "react";
+import { useOutletContext } from "react-router-dom";
 
-function SignUp(props) {
+function SignUp() {
   const [isValid, setIsValid] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
+  const [isModalOpen, setIsModalOpen] = useOutletContext();
 
   function handleFinish({ firstName, lastName, email, password, location }) {
     axios
@@ -27,11 +29,13 @@ function SignUp(props) {
       .then((response) => {
         console.log(response);
         setIsValid(true);
+        setIsModalOpen(true);
       })
       .catch((err) => {
         console.log(err);
         setIsValid(false);
         setErrorMsg(err.response.data.description);
+        setIsModalOpen(false);
       });
   }
 

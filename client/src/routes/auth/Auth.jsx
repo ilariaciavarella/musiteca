@@ -1,4 +1,4 @@
-import { Col, ConfigProvider, Layout, Row } from "antd";
+import { Col, ConfigProvider, Layout, Modal, Row } from "antd";
 const { Content } = Layout;
 
 import styles from "./Auth.module.scss";
@@ -6,9 +6,21 @@ import styles from "./Auth.module.scss";
 import LogoLight from "../../assets/images/logo/musiteca-logo_light.svg";
 import loginImage from "../../assets/images/illustrations/musiteca-login_illustration.png";
 import MusitecaFooter from "../../components/footer/MusitecaFooter.jsx";
-import { Outlet } from "react-router-dom";
+import { Outlet, redirect } from "react-router-dom";
+import { useState } from "react";
 
-function Auth(props) {
+function Auth() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  function handleModalConfirm() {
+    setIsModalOpen(false);
+    redirect("auth/login");
+  }
+
+  function handleModalCancel() {
+    setIsModalOpen(false);
+  }
+
   return (
     <ConfigProvider
       theme={{
@@ -26,6 +38,24 @@ function Auth(props) {
       }}
     >
       <Layout style={{ backgroundColor: "#4930AA" }}>
+        <Modal
+          title="Registration successful"
+          open={isModalOpen}
+          okButtonProps={{
+            href: "login",
+            type: "primary",
+          }}
+          okText="Go to login page"
+          cancelText="Close"
+          closable={false}
+          onOk={handleModalConfirm}
+          onCancel={handleModalCancel}
+        >
+          <p>
+            Your account has been successfully created. Go to the login page and
+            sign in to Musiteca!
+          </p>
+        </Modal>
         <Content className={styles["container"]}>
           <Row gutter={[24, 12]} align="middle" justify="center">
             <Col xs={24} md={12} xl={10}>
@@ -48,7 +78,7 @@ function Auth(props) {
               />
             </Col>
             <Col xs={24} md={12} xl={10}>
-              <Outlet />
+              <Outlet context={[isModalOpen, setIsModalOpen]} />
             </Col>
           </Row>
         </Content>

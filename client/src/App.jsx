@@ -86,6 +86,14 @@ function App() {
           },
         },
       }}
+      button={{
+        className: "btn",
+      }}
+      modal={{
+        classNames: {
+          content: "modal-content",
+        },
+      }}
     >
       <RouterProvider router={router} />
     </ConfigProvider>
