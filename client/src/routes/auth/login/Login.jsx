@@ -3,8 +3,10 @@ import { Form, Input, Button, Alert } from "antd";
 import styles from "../Auth.module.scss";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   const [isValid, setIsValid] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -25,6 +27,7 @@ function Login() {
       .then((response) => {
         console.log(response);
         setIsValid(true);
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
@@ -87,16 +90,6 @@ function Login() {
           <Form.Item className={styles["login-button"]}>
             <Button block type="primary" htmlType="submit">
               Login
-            </Button>
-          </Form.Item>
-          <Form.Item>
-            <Button
-              block
-              type="link"
-              href="/forgot-password"
-              className="btn-invisible"
-            >
-              Forgot password?
             </Button>
           </Form.Item>
         </Form>

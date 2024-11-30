@@ -6,15 +6,16 @@ import styles from "./Auth.module.scss";
 import LogoLight from "../../assets/images/logo/musiteca-logo_light.svg";
 import loginImage from "../../assets/images/illustrations/musiteca-login_illustration.png";
 import MusitecaFooter from "../../components/footer/MusitecaFooter.jsx";
-import { Outlet, redirect } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 function Auth() {
+  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   function handleModalConfirm() {
     setIsModalOpen(false);
-    redirect("auth/login");
+    navigate("auth/login");
   }
 
   function handleModalCancel() {

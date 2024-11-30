@@ -68,6 +68,7 @@ function SignUp() {
                     required: true,
                     message: "Please, provide your first name",
                     min: 1,
+                    whitespace: true,
                   },
                 ]}
                 className={styles["login-item"]}
@@ -84,6 +85,7 @@ function SignUp() {
                     required: true,
                     message: "Please, provide your last name",
                     min: 1,
+                    whitespace: true,
                   },
                 ]}
                 className={styles["login-item"]}
@@ -104,7 +106,7 @@ function SignUp() {
                   {
                     required: true,
                     message: "Please, insert your email",
-                    min: 5,
+                    type: "email",
                   },
                 ]}
                 className={styles["login-item"]}
@@ -143,6 +145,7 @@ function SignUp() {
                 required: true,
                 message: "Please, insert your city",
                 min: 1,
+                whitespace: true,
               },
             ]}
             className={styles["login-item"]}
