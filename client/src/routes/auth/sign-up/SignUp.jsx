@@ -1,39 +1,57 @@
 import styles from "../Auth.module.scss";
-import { Button, Form, Input, Row, Col } from "antd";
+import { Button, Form, Input, Row, Col, Alert } from "antd";
 import axios from "axios";
-
-function signupFormSubmit({ firstName, lastName, email, password, location }) {
-  axios
-    .post(
-      "http://localhost:8080/auth/signup",
-      {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-        location: location,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      },
-    )
-    .then((response) => {
-      console.log(response);
-    });
-}
+import { useState } from "react";
 
 function SignUp(props) {
+  const [isValid, setIsValid] = useState(true);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  function handleFinish({ firstName, lastName, email, password, location }) {
+    axios
+      .post(
+        "http://localhost:8080/auth/signup",
+        {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          password: password,
+          location: location,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      )
+      .then((response) => {
+        console.log(response);
+        setIsValid(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsValid(false);
+        setErrorMsg(err.response.data.description);
+      });
+  }
+
   return (
     <>
       <div className={styles["login-container"]}>
         <h2>Sign up to Musiteca</h2>
+        {!isValid && (
+          <Alert
+            className={styles["error-msg"]}
+            message={errorMsg}
+            type="error"
+            showIcon
+          />
+        )}
         <Form
           layout="vertical"
           requiredMark={false}
           onFinish={(values) => {
-            signupFormSubmit(values);
+            handleFinish(values);
           }}
         >
           <Row gutter={12}>
@@ -45,6 +63,7 @@ function SignUp(props) {
                   {
                     required: true,
                     message: "Please, provide your first name",
+                    min: 1,
                   },
                 ]}
                 className={styles["login-item"]}
@@ -60,6 +79,7 @@ function SignUp(props) {
                   {
                     required: true,
                     message: "Please, provide your last name",
+                    min: 1,
                   },
                 ]}
                 className={styles["login-item"]}
@@ -80,6 +100,7 @@ function SignUp(props) {
                   {
                     required: true,
                     message: "Please, insert your email",
+                    min: 5,
                   },
                 ]}
                 className={styles["login-item"]}
@@ -117,6 +138,7 @@ function SignUp(props) {
               {
                 required: true,
                 message: "Please, insert your city",
+                min: 1,
               },
             ]}
             className={styles["login-item"]}

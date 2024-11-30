@@ -79,6 +79,11 @@ function App() {
             colorTextPlaceholder: "rgba(18, 12, 42, 0.5)",
             colorText: "#120C2A",
           },
+          Alert: {
+            colorText: "#120C2A",
+            colorTextHeading: "#120C2A",
+            colorErrorBg: "rgba(255,240,241,0.7)",
+          },
         },
       }}
     >

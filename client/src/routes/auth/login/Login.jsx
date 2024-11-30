@@ -1,32 +1,50 @@
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, Alert } from "antd";
 
 import styles from "../Auth.module.scss";
 import axios from "axios";
-
-function loginFormSubmit({ email, password }) {
-  axios
-    .post(
-      "http://localhost:8080/auth/login",
-      {
-        email: email,
-        password: password,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      },
-    )
-    .then((response) => {
-      console.log(response);
-    });
-}
+import { useState } from "react";
 
 function Login(props) {
+  const [isValid, setIsValid] = useState(true);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  function loginFormSubmit({ email, password }) {
+    axios
+      .post(
+        "http://localhost:8080/auth/login",
+        {
+          email: email,
+          password: password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      )
+      .then((response) => {
+        console.log(response);
+        setIsValid(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsValid(false);
+        setErrorMsg(err.response.data.description);
+      });
+  }
+
   return (
     <>
       <div className={styles["login-container"]}>
         <h2>Login to Musiteca</h2>
+        {!isValid && (
+          <Alert
+            className={styles["error-msg"]}
+            message={errorMsg}
+            type="error"
+            showIcon
+          />
+        )}
         <Form
           layout="vertical"
           requiredMark={false}

@@ -16,7 +16,6 @@ function Auth(props) {
           colorPrimary: "#E2EE00",
           colorText: "#F9FAED",
           colorBgBase: "#4930AA",
-          colorError: "#CE1C4B",
           colorLink: "#E2EE00",
         },
         components: {
