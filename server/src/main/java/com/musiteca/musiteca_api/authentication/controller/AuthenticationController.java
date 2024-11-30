@@ -31,7 +31,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody @Valid LoginUserDto loginUserDto) {
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginUserDto loginUserDto) {
         MusitecaUser authenticatedUser = authenticationService.login(loginUserDto);
         String jwtToken = jwtService.generateToken(authenticatedUser);
         LoginResponse loginResponse = new LoginResponse();
