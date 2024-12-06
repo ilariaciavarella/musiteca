@@ -73,7 +73,7 @@ function SignUp() {
                 ]}
                 className={styles["login-item"]}
               >
-                <Input placeholder="Emily" className={styles["login-input"]} />
+                <Input placeholder="Emily" />
               </Form.Item>
             </Col>
             <Col xs={24} lg={12}>
@@ -90,10 +90,7 @@ function SignUp() {
                 ]}
                 className={styles["login-item"]}
               >
-                <Input
-                  placeholder="Armstrong"
-                  className={styles["login-input"]}
-                />
+                <Input placeholder="Armstrong" />
               </Form.Item>
             </Col>
           </Row>
@@ -111,10 +108,7 @@ function SignUp() {
                 ]}
                 className={styles["login-item"]}
               >
-                <Input
-                  placeholder="Type your email"
-                  className={styles["login-input"]}
-                />
+                <Input placeholder="emily.a@gmail.com" />
               </Form.Item>
             </Col>
             <Col xs={24} lg={12}>
@@ -130,10 +124,7 @@ function SignUp() {
                 ]}
                 className={styles["login-item"]}
               >
-                <Input.Password
-                  placeholder="Enter your password"
-                  className={styles["login-input"]}
-                />
+                <Input.Password placeholder="Password" />
               </Form.Item>
             </Col>
           </Row>
@@ -150,7 +141,7 @@ function SignUp() {
             ]}
             className={styles["login-item"]}
           >
-            <Input placeholder="Rome" className={styles["login-input"]} />
+            <Input placeholder="Rome" />
           </Form.Item>
           <Form.Item className={styles["login-button"]}>
             <Button block type="primary" htmlType="submit">

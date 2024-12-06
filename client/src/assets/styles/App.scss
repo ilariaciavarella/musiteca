@@ -53,6 +53,7 @@ p {
 .btn {
   border: 2px solid variables.$darkpurple;
   text-decoration: none;
+  min-width: 48px;
 }
 
 .btn-light {
@@ -73,4 +74,8 @@ p {
   font-size: .9rem;
   margin-top: .2rem;
   color: lighten(variables.$error, 5%);
+}
+
+.input {
+  border-width: 2px;
 }

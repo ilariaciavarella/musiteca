@@ -66,10 +66,7 @@ function Login() {
             ]}
             className={styles["login-item"]}
           >
-            <Input
-              placeholder="Type your email"
-              className={styles["login-input"]}
-            />
+            <Input placeholder="emily.a@gmail.com" />
           </Form.Item>
           <Form.Item
             label="Password"
@@ -82,10 +79,7 @@ function Login() {
             ]}
             className={styles["login-item"]}
           >
-            <Input.Password
-              placeholder="Enter your password"
-              className={styles["login-input"]}
-            />
+            <Input.Password placeholder="Password" />
           </Form.Item>
           <Form.Item className={styles["login-button"]}>
             <Button block type="primary" htmlType="submit">

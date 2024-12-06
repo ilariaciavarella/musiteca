@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ConfigProvider } from "antd";
 
@@ -8,8 +9,6 @@ import Error from "./routes/error/Error.jsx";
 import Login from "./routes/auth/login/Login.jsx";
 import Auth from "./routes/auth/Auth.jsx";
 import SignUp from "./routes/auth/sign-up/SignUp.jsx";
-
-import { useEffect, useState } from "react";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +57,11 @@ function App() {
           borderRadius: 8,
         },
         components: {
+          Layout: {
+            siderBg: "#E2EE00",
+            bodyBg: "#F9FAED",
+            headerBg: "#4930AA",
+          },
           Button: {
             contentFontSize: fontSize,
             contentFontSizeLG: fontSize + 4,
@@ -84,6 +88,11 @@ function App() {
             colorTextHeading: "#120C2A",
             colorErrorBg: "rgba(255,240,241,0.7)",
           },
+          Menu: {
+            itemBg: "#E2EE00",
+            itemColor: "#120C2A",
+            colorSplit: "transparent",
+          },
         },
       }}
       button={{
@@ -93,6 +102,9 @@ function App() {
         classNames: {
           content: "modal-content",
         },
+      }}
+      input={{
+        className: "input",
       }}
     >
       <RouterProvider router={router} />
