@@ -4,7 +4,7 @@ import { Layout, Row, Col, Button } from "antd";
 
 const { Content } = Layout;
 
-import styles from "./Error.module.scss";
+import styles from "./error.module.scss";
 
 import MusitecaFooter from "../../components/footer/MusitecaFooter.jsx";
 

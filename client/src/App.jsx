@@ -6,6 +6,7 @@ import "./assets/styles/App.scss";
 
 import Root from "./routes/Root.jsx";
 import Error from "./routes/error/Error.jsx";
+import Home from "./routes/home/Home.jsx";
 import Login from "./routes/auth/login/Login.jsx";
 import Auth from "./routes/auth/Auth.jsx";
 import SignUp from "./routes/auth/sign-up/SignUp.jsx";
@@ -15,6 +16,12 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     errorElement: <Error />,
+    children: [
+      {
+        path: "home",
+        element: <Home />,
+      },
+    ],
   },
   {
     path: "/auth",

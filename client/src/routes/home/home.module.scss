@@ -1,0 +1,16 @@
+.main-container {
+  padding: 1.5rem .75rem;
+}
+
+.greeting {
+  font-family: "Quicksand", sans-serif, system-ui;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 110%;
+}
+
+@media only screen and (min-width: 768px){
+  .main-container {
+    padding: 2rem;
+  }
+}

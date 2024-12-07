@@ -1,6 +1,6 @@
 import { Form, Input, Button, Alert } from "antd";
 
-import styles from "../Auth.module.scss";
+import styles from "../auth.module.scss";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
