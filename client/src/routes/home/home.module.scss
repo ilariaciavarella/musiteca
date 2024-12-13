@@ -1,5 +1,12 @@
 .main-container {
   padding: 1.5rem .75rem;
+  max-height: 100vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.post-container {
+  container: card-container / inline-size;
 }
 
 .greeting {
@@ -7,6 +14,10 @@
   font-size: 2rem;
   font-weight: 700;
   line-height: 110%;
+}
+
+.feed-post {
+  margin-top: 2.5rem;
 }
 
 @media only screen and (min-width: 768px){

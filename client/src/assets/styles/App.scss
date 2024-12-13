@@ -39,6 +39,10 @@ h2 {
   margin-bottom: 2rem;
 }
 
+h3 {
+  margin-bottom: 1.25rem;
+}
+
 h4 {
   font-size: 1.25rem;
   line-height: 110%;
@@ -66,12 +70,20 @@ p {
   border: none;
 }
 
+.btn-invisible-small {
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  font-size: variables.$text-small;
+  height: fit-content;
+}
+
 .ant-modal-content.modal-content {
   border: 2px solid variables.$darkpurple;
 }
 
 .ant-form-item-explain .ant-form-item-explain-error {
-  font-size: .9rem;
+  font-size: variables.$text-small;
   margin-top: .2rem;
   color: lighten(variables.$error, 5%);
 }

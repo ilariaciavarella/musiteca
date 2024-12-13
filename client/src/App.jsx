@@ -113,6 +113,9 @@ function App() {
       input={{
         className: "input",
       }}
+      card={{
+        className: "card",
+      }}
     >
       <RouterProvider router={router} />
     </ConfigProvider>

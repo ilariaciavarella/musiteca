@@ -5,15 +5,20 @@ import MusitecaHeader from "../components/header/MusitecaHeader.jsx";
 
 function Root() {
   return (
-    <Layout>
+    <Layout
+      style={{
+        maxHeight: "100vh",
+        overflow: "hidden",
+      }}
+    >
       <Row>
-        <Col xs={24} md={8} lg={6}>
+        <Col xs={24} md={7} lg={5}>
           <MusitecaHeader />
         </Col>
-        <Col xs={24} md={16} lg={12}>
+        <Col xs={24} md={17} lg={14}>
           <Outlet />
         </Col>
-        <Col xs={0} lg={6}></Col>
+        <Col xs={0} lg={5}></Col>
       </Row>
     </Layout>
   );

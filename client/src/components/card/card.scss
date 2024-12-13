@@ -1,0 +1,68 @@
+@use '../../assets/styles/variables';
+
+.card {
+  border: 2px solid variables.$darkpurple;
+  overflow: hidden;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.instrument-image {
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-top: 2px solid variables.$darkpurple;
+}
+
+@container card-container (min-width: 540px) {
+  .card {
+    grid-template-columns: 3fr 2fr;
+  }
+
+  .instrument-image {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    aspect-ratio: unset;
+    border-left: 2px solid variables.$darkpurple;
+    border-top: none;
+  }
+}
+
+.post-content {
+  padding: 1.1rem;
+
+  ul {
+    font-size: variables.$text-small;
+    color: variables.$darkpurple70;
+    list-style: none;
+    margin-top: .5rem;
+  }
+}
+
+.post-details {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  margin-bottom: 1.1rem;
+
+  .post-author {
+    font-weight: 600;
+    margin-bottom: 0;
+
+    & ~ div {
+      font-size: variables.$text-small;
+    }
+  }
+}
+
+.post-actions {
+  margin-top: 1.5rem;
+
+  .main-action {
+    flex-grow: 1;
+  }
+}
