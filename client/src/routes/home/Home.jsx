@@ -3,13 +3,20 @@ import { MegaphoneSimple } from "@phosphor-icons/react";
 
 import styles from "./home.module.scss";
 import InstrumentCard from "../../components/card/InstrumentCard.jsx";
+import { useOutletContext } from "react-router-dom";
 
 function Home() {
+  const openPostForm = useOutletContext();
+
   return (
     <main className={styles["main-container"]}>
       <Flex wrap align="center" justify="space-between" gap="middle">
         <div className={styles["greeting"]}>Hi!</div>
-        <Button type="primary" icon={<MegaphoneSimple size={20} />}>
+        <Button
+          type="primary"
+          icon={<MegaphoneSimple size={20} />}
+          onClick={openPostForm}
+        >
           Lend your instrument
         </Button>
       </Flex>

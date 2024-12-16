@@ -90,6 +90,15 @@ function App() {
             colorTextPlaceholder: "rgba(18, 12, 42, 0.5)",
             colorText: "#120C2A",
           },
+          InputNumber: {
+            controlHeight: 48,
+            controlHeightLG: 52,
+            controlHeightSM: 40,
+            colorBorder: "#120C2A",
+            colorBgContainer: "rgba(249,250,237,0.7)",
+            colorTextPlaceholder: "rgba(18, 12, 42, 0.5)",
+            colorText: "#120C2A",
+          },
           Alert: {
             colorText: "#120C2A",
             colorTextHeading: "#120C2A",

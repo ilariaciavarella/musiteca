@@ -11,6 +11,7 @@ import "./header.scss";
 
 import LogoLight from "../../assets/images/logo/musiteca-logo_light.svg";
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 function MusitecaHeader(props) {
   const [showNav, setShowNav] = useState(false);
@@ -25,6 +26,7 @@ function MusitecaHeader(props) {
       key: 2,
       label: "Lend",
       icon: <PlusCircle size={20} />,
+      onClick: props.openPostForm,
     },
     {
       key: 3,
@@ -78,5 +80,9 @@ function MusitecaHeader(props) {
     </ConfigProvider>
   );
 }
+
+MusitecaHeader.propTypes = {
+  openPostForm: PropTypes.func,
+};
 
 export default MusitecaHeader;
