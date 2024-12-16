@@ -9,7 +9,7 @@ import "./footer.scss";
 function MusitecaFooter(props) {
   return (
     <Footer className={props.light ? "footer footer-light" : "footer"}>
-      <Flex justify="space-around" align="center" gap="small">
+      <Flex justify="space-around" align="center" gap="small" wrap>
         <small>
           © 2024 Musiteca by <em>Ilaria Ciavarella</em> – All rights reserved
         </small>

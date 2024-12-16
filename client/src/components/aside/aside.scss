@@ -1,0 +1,21 @@
+@use '../../assets/styles/variables';
+
+aside:has(.recent-researches) {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.recent-researches {
+  padding: 2rem 1rem;
+  margin-bottom: auto;
+
+  ul {
+    list-style: none;
+  }
+
+   li button {
+     color: variables.$darkpurple70;
+   }
+}

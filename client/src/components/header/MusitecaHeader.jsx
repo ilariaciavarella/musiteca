@@ -13,7 +13,7 @@ import LogoLight from "../../assets/images/logo/musiteca-logo_light.svg";
 import { useState } from "react";
 
 function MusitecaHeader(props) {
-  const [showNav, setShowNav] = useState(true);
+  const [showNav, setShowNav] = useState(false);
 
   const menuItems = [
     {

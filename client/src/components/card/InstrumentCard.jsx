@@ -36,7 +36,7 @@ function InstrumentCard(props) {
           </p>
           <Button
             type="link"
-            className="btn-invisible-small"
+            className="btn-link btn-small"
             onClick={toggleInstrumentDetails}
           >
             Show details
