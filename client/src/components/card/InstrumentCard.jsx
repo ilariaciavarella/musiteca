@@ -15,9 +15,9 @@ function InstrumentCard(props) {
   return (
     <div className="card">
       <img src="https://picsum.photos/600/800" className="instrument-image" />
-      <div className="post-content">
+      <Flex vertical justify="space-between" className="post-content">
         <div>
-          <div className="post-details">
+          <Flex align="center" className="post-details">
             <Avatar src={props.userPic} shape="square" size={52}>
               {props.userName.slice(0, 1)}
             </Avatar>
@@ -28,7 +28,7 @@ function InstrumentCard(props) {
                 <strong>{`${props.userLocation}`}</strong>
               </div>
             </div>
-          </div>
+          </Flex>
           <p>
             Cupcake ipsum dolor sit amet chupa chups toffee donut. Gingerbread
             gingerbread tart I love oat cake apple pie fruitcake cotton candy.
@@ -65,7 +65,7 @@ function InstrumentCard(props) {
             Borrow
           </Button>
         </Flex>
-      </div>
+      </Flex>
     </div>
   );
 }
