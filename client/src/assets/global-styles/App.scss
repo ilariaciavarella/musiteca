@@ -1,4 +1,6 @@
-@use 'variables';
+@use 'color-var';
+@use 'text-var';
+@use 'spacing-var';
 
 * {
   box-sizing: border-box;
@@ -7,11 +9,11 @@
 }
 
 :root {
-  font-family: "Public Sans", sans-serif, system-ui;
+  font-family: text-var.$text-font;
   font-size: calc(13px + 0.390625vw);
-  font-weight: 400;
+  font-weight: text-var.$weight-regular;
   font-style: normal;
-  color: variables.$darkpurple;
+  color: color-var.$darkpurple;
 
   --bodyColour: #F9FAED;
 }
@@ -23,46 +25,45 @@
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Quicksand", sans-serif, system-ui;
+  font-family: text-var.$headings-font;
+  line-height: 110%;
   text-wrap: pretty;
 }
 
 h1 {
-  font-size: 3rem;
-  line-height: 110%;
-  margin-bottom: 1rem;
+  font-size: text-var.$h1-size;
+  margin-bottom: spacing-var.$space-rg;
 }
 
 h2 {
-  font-size: 2rem;
-  line-height: 110%;
-  margin-bottom: 2rem;
+  font-size: text-var.$h2-size;
+  margin-bottom: spacing-var.$space-lg;
 }
 
 h3 {
-  margin-bottom: 1.25rem;
+  font-size: text-var.$h3-size;
+  margin-bottom: spacing-var.$space-md;
 }
 
 h4 {
-  font-size: 1.25rem;
-  line-height: 110%;
-  margin-bottom: 1.25rem;
-  font-weight: 400;
+  font-size: text-var.$h4-size;
+  margin-bottom: spacing-var.$space-md;
+  font-weight: text-var.$weight-regular;
 }
 
 p {
-  margin-bottom: 1rem;
+  margin-bottom: spacing-var.$space-rg;
 }
 
 .btn {
-  border: 2px solid variables.$darkpurple;
+  border: 2px solid color-var.$darkpurple;
   text-decoration: none;
   min-width: 48px;
 }
 
 .btn-light {
-  border: 2px solid variables.$ivory;
-  color: variables.$ivory;
+  border: 2px solid color-var.$ivory;
+  color: color-var.$ivory;
   text-decoration: none;
 }
 
@@ -77,18 +78,18 @@ p {
 
 .btn-small {
   padding: 0;
-  font-size: variables.$text-small;
+  font-size: text-var.$text-small;
   height: fit-content;
 }
 
 .ant-modal-content.modal-content {
-  border: 2px solid variables.$darkpurple;
+  border: 2px solid color-var.$darkpurple;
 }
 
 .ant-form-item-explain .ant-form-item-explain-error {
-  font-size: variables.$text-small;
-  margin-top: .2rem;
-  color: lighten(variables.$error, 5%);
+  font-size: text-var.$text-small;
+  margin-top: spacing-var.$space-xs;
+  color: lighten(color-var.$error, 5%);
 }
 
 .input {

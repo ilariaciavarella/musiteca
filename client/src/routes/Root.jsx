@@ -7,7 +7,7 @@ import MusitecaAside from "../components/aside/MusitecaAside.jsx";
 import PostForm from "../components/post-form/PostForm.jsx";
 
 function Root() {
-  const [isFormOpen, setIsFormOpen] = useState(true);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   function openPostForm() {
     setIsFormOpen(true);

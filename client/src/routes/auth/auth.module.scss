@@ -1,25 +1,26 @@
-@use '../../assets/global-styles/variables';
+@use '../../assets/global-styles/color-var';
+@use '../../assets/global-styles/spacing-var';
 
 .musiteca-logo {
   max-width: 15rem;
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: spacing-var.$space-lg;
 }
 
 .container {
-  padding: 2rem 1rem;
+  padding: spacing-var.$space-lg spacing-var.$space-rg;
 }
 
 .error-msg {
-  margin-bottom: 1rem;
+  margin-bottom: spacing-var.$space-rg;
 }
 
 .login-container {
-  background-color: variables.$midpurple;
-  border: 2px solid variables.$darkpurple;
+  background-color: color-var.$midpurple;
+  border: 2px solid color-var.$darkpurple;
   border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 1.25rem;
+  padding: spacing-var.$space-md;
+  margin-bottom: spacing-var.$space-md;
 
   h2, h4 {
     text-align: center;
@@ -27,7 +28,7 @@
 }
 
 .login-button {
-  margin-top: 2rem;
+  margin-top: spacing-var.$space-lg;
 }
 
 .login-image {
@@ -37,6 +38,6 @@
 
 @media only screen and (min-width: 768px) {
   .login-container {
-    padding: 2.5rem;
+    padding: spacing-var.$space-xl;
   }
 }

@@ -1,4 +1,6 @@
-@use '../../assets/global-styles/variables';
+@use '../../assets/global-styles/color-var';
+@use '../../assets/global-styles/text-var';
+@use '../../assets/global-styles/spacing-var';
 
 .musiteca-header {
   height: fit-content;
@@ -11,7 +13,7 @@
 .header-top {
   width: 100%;
   height: 88px;
-  padding: 1rem;
+  padding: spacing-var.$space-rg;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,19 +35,19 @@
 }
 
 .search-bar-container {
-  padding: 1rem;
+  padding: spacing-var.$space-rg;
   max-height: 6rem;
 }
 
 .nav-menu {
-  padding: 2rem 0;
+  padding: spacing-var.$space-lg 0;
   min-height: 240px;
   height: 100%;
   display: flex;
   flex-direction: column;
 
   li {
-    font-weight: 500;
+    font-weight: text-var.$weight-semibold;
 
     &:last-of-type {
       margin-top: auto;

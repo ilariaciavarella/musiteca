@@ -1,5 +1,9 @@
+@use '../../assets/global-styles/color-var';
+@use '../../assets/global-styles/text-var';
+@use '../../assets/global-styles/spacing-var';
+
 .main-container {
-  padding: 1.5rem .75rem;
+  padding: spacing-var.$space-lg spacing-var.$space-rg;
   max-height: 100vh;
   overflow-y: scroll;
   scrollbar-width: none;
@@ -10,18 +14,18 @@
 }
 
 .greeting {
-  font-family: "Quicksand", sans-serif, system-ui;
-  font-size: 2rem;
-  font-weight: 700;
+  font-family: text-var.$headings-font;
+  font-size: text-var.$h2-size;
+  font-weight: text-var.$weight-bold;
   line-height: 110%;
 }
 
 .feed-post {
-  margin-top: 2.5rem;
+  margin-top: spacing-var.$space-xl;
 }
 
 @media only screen and (min-width: 768px){
   .main-container {
-    padding: 2rem;
+    padding: spacing-var.$space-lg;
   }
 }

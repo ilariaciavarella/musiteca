@@ -1,9 +1,10 @@
-@use '../../assets/global-styles/variables';
+@use '../../assets/global-styles/color-var';
+@use '../../assets/global-styles/spacing-var';
 
 .footer {
-  border-top: 1.5px solid variables.$darkpurple;
-  padding: 2rem 1rem;
-  color: variables.$darkpurple70;
+  border-top: 1.5px solid color-var.$darkpurple;
+  padding: spacing-var.$space-lg spacing-var.$space-rg;
+  color: color-var.$darkpurple70;
   background: none;
 
   small {
@@ -12,8 +13,8 @@
 }
 
 .footer-light {
-  color: variables.$ivory70;
-  border-top-color: variables.$ivory;
+  color: color-var.$ivory70;
+  border-top-color: color-var.$ivory;
 }
 
 .social-links a {

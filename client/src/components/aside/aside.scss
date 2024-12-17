@@ -1,4 +1,5 @@
-@use '../../assets/global-styles/variables';
+@use '../../assets/global-styles/color-var';
+@use '../../assets/global-styles/spacing-var';
 
 aside:has(.recent-researches) {
   height: 100vh;
@@ -8,7 +9,7 @@ aside:has(.recent-researches) {
 }
 
 .recent-researches {
-  padding: 2rem 1rem;
+  padding: spacing-var.$space-lg spacing-var.$space-rg;
   margin-bottom: auto;
 
   ul {
@@ -16,6 +17,6 @@ aside:has(.recent-researches) {
   }
 
    li button {
-     color: variables.$darkpurple70;
+     color: color-var.$darkpurple70;
    }
 }

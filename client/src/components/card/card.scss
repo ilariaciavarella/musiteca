@@ -1,7 +1,9 @@
-@use '../../assets/global-styles/variables';
+@use '../../assets/global-styles/color-var';
+@use '../../assets/global-styles/text-var';
+@use '../../assets/global-styles/spacing-var';
 
 .card {
-  border: 2px solid variables.$darkpurple;
+  border: 2px solid color-var.$darkpurple;
   overflow: hidden;
   border-radius: 8px;
   display: grid;
@@ -15,7 +17,7 @@
   height: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  border-top: 2px solid variables.$darkpurple;
+  border-top: 2px solid color-var.$darkpurple;
 }
 
 @container card-container (min-width: 540px) {
@@ -27,38 +29,38 @@
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     aspect-ratio: unset;
-    border-left: 2px solid variables.$darkpurple;
+    border-left: 2px solid color-var.$darkpurple;
     border-top: none;
   }
 }
 
 .post-content {
-  padding: 1.1rem;
+  padding: spacing-var.$space-rg;
 
   ul {
-    font-size: variables.$text-small;
-    color: variables.$darkpurple70;
+    font-size: text-var.$text-small;
+    color: color-var.$darkpurple70;
     list-style: none;
-    margin-top: .5rem;
+    margin-top: spacing-var.$space-sm;
   }
 }
 
 .post-details {
-  gap: .8rem;
-  margin-bottom: 1.1rem;
+  gap: spacing-var.$space-rg;
+  margin-bottom: spacing-var.$space-rg;
 
   .post-author {
-    font-weight: 600;
-    margin-bottom: 0.2rem;
+    font-weight: text-var.$weight-semibold;
+    margin-bottom: spacing-var.$space-xs;
 
     & ~ div {
-      font-size: variables.$text-small;
+      font-size: text-var.$text-small;
     }
   }
 }
 
 .post-actions {
-  margin-top: 1.5rem;
+  margin-top: spacing-var.$space-md;
 
   .main-action {
     flex-grow: 1;
