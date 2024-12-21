@@ -27,7 +27,8 @@ function Login() {
       .then((response) => {
         console.log(response);
         setIsValid(true);
-        navigate("/");
+        localStorage.setItem("authToken", response.data.token);
+        navigate("/home");
       })
       .catch((err) => {
         console.log(err);

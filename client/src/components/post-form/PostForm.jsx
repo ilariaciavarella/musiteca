@@ -17,6 +17,7 @@ import { UploadSimple } from "@phosphor-icons/react";
 import "./post-form.scss";
 
 function PostForm(props) {
+  const token = localStorage.getItem("authToken");
   const [fileList, setFileList] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
   const [postForm] = Form.useForm();
@@ -82,28 +83,28 @@ function PostForm(props) {
 
     console.log("done");
 
-    // axios
-    //   .post(
-    //     "http://localhost:8080/api/posts/create",
-    //     {
-    //       instrument: instrument,
-    //       brand: brand,
-    //       age: age,
-    //       picture: imageUrl,
-    //       body: caption,
-    //     },
-    //     {
-    //       headers: {
-    //         // Authorization: `Bearer ${token}`,
-    //       },
-    //     },
-    //   )
-    //   .then((response) => {
-    //     console.log(response);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    axios
+      .post(
+        "http://localhost:8080/api/posts/create",
+        {
+          instrument: instrument,
+          brand: brand,
+          age: age,
+          image: imageUrl,
+          body: caption,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     setSelectedImage(null);
     setFileList([]);
