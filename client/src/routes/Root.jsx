@@ -13,10 +13,7 @@ function Root() {
     setIsFormOpen(true);
   }
 
-  function handlePostFormConfirm() {
-    setIsFormOpen(false);
-  }
-  function handlePostFormCancel() {
+  function closePostForm() {
     setIsFormOpen(false);
   }
 
@@ -33,18 +30,14 @@ function Root() {
             <MusitecaHeader openPostForm={openPostForm} />
           </Col>
           <Col xs={24} md={17} lg={14}>
-            <Outlet context={openPostForm} />
+            <Outlet context={[isFormOpen, setIsFormOpen]} />
           </Col>
           <Col xs={0} lg={5}>
             <MusitecaAside />
           </Col>
         </Row>
       </Layout>
-      <PostForm
-        isFormOpen={isFormOpen}
-        handlePostFormCancel={handlePostFormCancel}
-        handlePostFormConfirm={handlePostFormConfirm}
-      />
+      <PostForm isFormOpen={isFormOpen} handleClose={closePostForm} />
     </>
   );
 }

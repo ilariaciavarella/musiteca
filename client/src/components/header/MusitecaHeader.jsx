@@ -19,7 +19,7 @@ function MusitecaHeader(props) {
   const menuItems = [
     {
       key: 1,
-      label: <a href="/">Home</a>,
+      label: <a href="/home">Home</a>,
       icon: <House size={20} />,
     },
     {

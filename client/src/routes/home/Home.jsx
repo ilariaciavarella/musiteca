@@ -6,7 +6,7 @@ import InstrumentCard from "../../components/card/InstrumentCard.jsx";
 import { useOutletContext } from "react-router-dom";
 
 function Home() {
-  const openPostForm = useOutletContext();
+  const [isFormOpen, setIsFormOpen] = useOutletContext();
 
   return (
     <main className={styles["main-container"]}>
@@ -15,7 +15,7 @@ function Home() {
         <Button
           type="primary"
           icon={<MegaphoneSimple size={20} />}
-          onClick={openPostForm}
+          onClick={() => setIsFormOpen(true)}
         >
           Lend your instrument
         </Button>
