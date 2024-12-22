@@ -1,4 +1,5 @@
 @use '../../assets/global-styles/color-var';
+@use '../../assets/global-styles/text-var';
 @use '../../assets/global-styles/spacing-var';
 
 .footer {
@@ -7,7 +8,8 @@
   color: color-var.$darkpurple70;
   background: none;
 
-  small {
+  p {
+    font-size: text-var.$text-small;
     text-align: center;
   }
 }

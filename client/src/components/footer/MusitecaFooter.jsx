@@ -10,9 +10,9 @@ function MusitecaFooter(props) {
   return (
     <Footer className={props.light ? "footer footer-light" : "footer"}>
       <Flex justify="space-around" align="center" gap="small" wrap>
-        <small>
+        <p>
           © 2024 Musiteca by <em>Ilaria Ciavarella</em> – All rights reserved
-        </small>
+        </p>
         <Space size="small" className="social-links">
           <Button
             href="https://www.linkedin.com/in/ilaria-ciavarella"
