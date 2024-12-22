@@ -44,6 +44,7 @@ function App() {
   const [fontSize, setFontSize] = useState(
     (0.390625 * window.innerWidth) / 100 + 13,
   );
+
   useEffect(() => {
     window.addEventListener("resize", () => {
       setFontSize((0.390625 * window.innerWidth) / 100 + 13);
