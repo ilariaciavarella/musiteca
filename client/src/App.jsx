@@ -4,7 +4,7 @@ import { ConfigProvider } from "antd";
 
 import "./assets/global-styles/App.scss";
 
-import Root from "./routes/Root.jsx";
+import Root, { loader as rootLoader } from "./routes/Root.jsx";
 import Error from "./routes/error/Error.jsx";
 import Home from "./routes/home/Home.jsx";
 import Login from "./routes/auth/login/Login.jsx";
@@ -16,9 +16,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     errorElement: <Error />,
+    loader: rootLoader,
     children: [
       {
-        path: "home",
+        index: true,
         element: <Home />,
       },
     ],

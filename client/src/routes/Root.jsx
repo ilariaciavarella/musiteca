@@ -1,33 +1,33 @@
-import { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { useState } from "react";
+import { Outlet, redirect, useLoaderData } from "react-router-dom";
 import { Col, Layout, Row } from "antd";
 import axios from "axios";
 import MusitecaHeader from "../components/header/MusitecaHeader.jsx";
 import MusitecaAside from "../components/aside/MusitecaAside.jsx";
 import PostForm from "../components/post-form/PostForm.jsx";
 
-function Root() {
+export async function loader() {
   const token = localStorage.getItem("authToken");
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
+  const loggedUser = await axios.get("http://localhost:8080/users/me", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   });
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:8080/users/me", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        setUser({
-          firstName: response.data.firstName,
-          lastName: response.data.lastName,
-        });
-      });
-  }, [token]);
+  if (!loggedUser) {
+    return redirect("http://localhost:5173/auth/login");
+  }
+
+  return { loggedUser };
+}
+
+function Root() {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const { loggedUser } = useLoaderData();
+  const user = {
+    firstName: loggedUser.data.firstName,
+    lastName: loggedUser.data.lastName,
+  };
 
   function openPostForm() {
     setIsFormOpen(true);
