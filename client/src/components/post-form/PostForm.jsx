@@ -8,6 +8,7 @@ import {
   Modal,
   Row,
   Upload,
+  Spin,
 } from "antd";
 import axios from "axios";
 import PropTypes from "prop-types";
@@ -18,9 +19,10 @@ import "./post-form.scss";
 
 function PostForm(props) {
   const token = localStorage.getItem("authToken");
+  const [postForm] = Form.useForm();
   const [fileList, setFileList] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [postForm] = Form.useForm();
+  const [isPosting, setIsPosting] = useState(false);
 
   // Upload image on firebase
   async function uploadImage(file) {
@@ -74,6 +76,7 @@ function PostForm(props) {
 
   // Handle submit post
   async function handlePost({ instrument, brand, age, caption }) {
+    setIsPosting(true);
     let imageUrl = "";
     try {
       imageUrl = await uploadImage(selectedImage);
@@ -104,6 +107,9 @@ function PostForm(props) {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setIsPosting(false);
       });
 
     setSelectedImage(null);
@@ -137,114 +143,117 @@ function PostForm(props) {
       <Modal
         title="Lend your instrument"
         maskClosable={false}
+        closable={!isPosting}
         open={props.isFormOpen}
         footer={false}
         onCancel={props.handleClose}
         destroyOnClose
       >
-        <Form
-          layout="vertical"
-          requiredMark={false}
-          onFinish={handlePost}
-          preserve={false}
-          form={postForm}
-        >
-          <Row gutter={12}>
-            <Col xs={24} lg={12}>
-              <Form.Item
-                label="Type of instrument"
-                name="instrument"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please, insert the type of instrument",
-                    whitespace: true,
-                  },
-                ]}
-              >
-                <Input placeholder="Drums" />
-              </Form.Item>
-            </Col>
-            <Col xs={24} lg={12}>
-              <Form.Item
-                label="Brand"
-                name="brand"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please, insert the brand of the instrument",
-                    whitespace: true,
-                  },
-                ]}
-              >
-                <Input placeholder="Pearl" />
-              </Form.Item>
-            </Col>
-          </Row>
-          <Row gutter={12}>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Age in years"
-                name="age"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please, insert the age of the instrument",
-                  },
-                ]}
-              >
-                <Input type="number" min={0} max={99} placeholder="5" />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Share a picture"
-                name="picture"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please, share a picture of your instrument",
-                  },
-                ]}
-              >
-                <Upload
-                  listType="picture"
-                  onRemove={removeImage}
-                  beforeUpload={handleBeforeUpload}
-                  fileList={fileList}
-                  maxCount={1}
-                  accept=".jpg,.jpeg,.png,.webp"
-                  className="upload-preview"
-                >
-                  <Button block icon={<UploadSimple size={28} />}>
-                    Select file
-                  </Button>
-                </Upload>
-              </Form.Item>
-            </Col>
-          </Row>
-          <Form.Item
-            label="Add a caption"
-            name="caption"
-            rules={[
-              {
-                required: true,
-                message: "Please, add something you want to say",
-                whitespace: true,
-              },
-            ]}
+        <Spin spinning={isPosting} size="large">
+          <Form
+            layout="vertical"
+            requiredMark={false}
+            onFinish={handlePost}
+            preserve={false}
+            form={postForm}
           >
-            <Input.TextArea
-              autoSize={{ minRows: 2, maxRows: 5 }}
-              className="input"
-            />
-          </Form.Item>
-          <Form.Item>
-            <Button block type="primary" htmlType="submit">
-              Post
-            </Button>
-          </Form.Item>
-        </Form>
+            <Row gutter={12}>
+              <Col xs={24} lg={12}>
+                <Form.Item
+                  label="Type of instrument"
+                  name="instrument"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please, insert the type of instrument",
+                      whitespace: true,
+                    },
+                  ]}
+                >
+                  <Input placeholder="Drums" />
+                </Form.Item>
+              </Col>
+              <Col xs={24} lg={12}>
+                <Form.Item
+                  label="Brand"
+                  name="brand"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please, insert the brand of the instrument",
+                      whitespace: true,
+                    },
+                  ]}
+                >
+                  <Input placeholder="Pearl" />
+                </Form.Item>
+              </Col>
+            </Row>
+            <Row gutter={12}>
+              <Col xs={24} md={12}>
+                <Form.Item
+                  label="Age in years"
+                  name="age"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please, insert the age of the instrument",
+                    },
+                  ]}
+                >
+                  <Input type="number" min={0} max={99} placeholder="5" />
+                </Form.Item>
+              </Col>
+              <Col xs={24} md={12}>
+                <Form.Item
+                  label="Share a picture"
+                  name="picture"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please, share a picture of your instrument",
+                    },
+                  ]}
+                >
+                  <Upload
+                    listType="picture"
+                    onRemove={removeImage}
+                    beforeUpload={handleBeforeUpload}
+                    fileList={fileList}
+                    maxCount={1}
+                    accept=".jpg,.jpeg,.png,.webp"
+                    className="upload-preview"
+                  >
+                    <Button block icon={<UploadSimple size={28} />}>
+                      Select file
+                    </Button>
+                  </Upload>
+                </Form.Item>
+              </Col>
+            </Row>
+            <Form.Item
+              label="Add a caption"
+              name="caption"
+              rules={[
+                {
+                  required: true,
+                  message: "Please, add something you want to say",
+                  whitespace: true,
+                },
+              ]}
+            >
+              <Input.TextArea
+                autoSize={{ minRows: 2, maxRows: 5 }}
+                className="input"
+              />
+            </Form.Item>
+            <Form.Item>
+              <Button block type="primary" htmlType="submit">
+                Post
+              </Button>
+            </Form.Item>
+          </Form>
+        </Spin>
       </Modal>
     </ConfigProvider>
   );
