@@ -14,26 +14,26 @@ function InstrumentCard(props) {
 
   return (
     <div className="card">
-      <img src="https://picsum.photos/600/800" className="instrument-image" />
+      <img
+        src={props.picture}
+        className="instrument-image"
+        alt={`Picture showing ${props.instrument}`}
+      />
       <Flex vertical justify="space-between" className="post-content">
         <div>
           <Flex align="center" className="post-details">
-            <Avatar src={props.userPic} shape="square" size={52}>
+            <Avatar shape="square" size={52}>
               {props.userName.slice(0, 1)}
             </Avatar>
             <div>
               <div className="post-author">{props.userName}</div>
               <div>
-                {`${props.createdTime}m • `}
+                {`${props.createdTime} • `}
                 <strong>{`${props.userLocation}`}</strong>
               </div>
             </div>
           </Flex>
-          <p>
-            Cupcake ipsum dolor sit amet chupa chups toffee donut. Gingerbread
-            gingerbread tart I love oat cake apple pie fruitcake cotton candy.
-            Chocolate bar gingerbread cake I love wafer muffin.
-          </p>
+          <p>{props.body}</p>
           <Button
             type="link"
             className="btn-link btn-small"
@@ -44,13 +44,16 @@ function InstrumentCard(props) {
           {showInstrumentDetails && (
             <ul>
               <li>
-                <strong>Instrument:</strong>
+                <strong>Instrument: </strong>
+                {props.instrument}
               </li>
               <li>
-                <strong>Brand:</strong>
+                <strong>Brand: </strong>
+                {props.brand}
               </li>
               <li>
-                <strong>Age:</strong>
+                <strong>Age: </strong>
+                {props.age}
               </li>
             </ul>
           )}
@@ -74,7 +77,11 @@ export default InstrumentCard;
 
 InstrumentCard.propTypes = {
   userName: PropTypes.string,
-  userPic: PropTypes.string,
   createdTime: PropTypes.number,
   userLocation: PropTypes.string,
+  picture: PropTypes.string,
+  body: PropTypes.string,
+  instrument: PropTypes.string,
+  brand: PropTypes.string,
+  age: PropTypes.number,
 };

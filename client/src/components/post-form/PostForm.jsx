@@ -31,11 +31,7 @@ function PostForm(props) {
     return new Promise((resolve, reject) => {
       uploadTask.on(
         "state_changed",
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done");
-        },
+        null,
         (error) => {
           console.error(`Upload failed: ${error.message}`);
           reject(error);
@@ -136,6 +132,9 @@ function PostForm(props) {
           },
           Modal: {
             colorIcon: "#F9FAED",
+          },
+          Input: {
+            colorTextDescription: "#E2EE00",
           },
         },
       }}
@@ -245,6 +244,8 @@ function PostForm(props) {
               <Input.TextArea
                 autoSize={{ minRows: 2, maxRows: 5 }}
                 className="input"
+                maxLength={250}
+                showCount
               />
             </Form.Item>
             <Form.Item>

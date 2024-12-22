@@ -6,7 +6,7 @@ import "./assets/global-styles/App.scss";
 
 import Root, { loader as rootLoader } from "./routes/Root.jsx";
 import Error from "./routes/error/Error.jsx";
-import Home from "./routes/home/Home.jsx";
+import Home, { loader as postsLoader } from "./routes/home/Home.jsx";
 import Login from "./routes/auth/login/Login.jsx";
 import Auth from "./routes/auth/Auth.jsx";
 import SignUp from "./routes/auth/sign-up/SignUp.jsx";
@@ -21,6 +21,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+        loader: postsLoader,
       },
     ],
   },

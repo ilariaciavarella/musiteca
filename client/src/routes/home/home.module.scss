@@ -4,7 +4,7 @@
 
 .main-container {
   padding: spacing-var.$space-lg spacing-var.$space-rg;
-  max-height: 100vh;
+  max-height: calc(100vh - 88px);
   overflow-y: scroll;
   scrollbar-width: none;
 }
@@ -27,5 +27,6 @@
 @media only screen and (min-width: 768px){
   .main-container {
     padding: spacing-var.$space-lg;
+    max-height: 100vh;
   }
 }

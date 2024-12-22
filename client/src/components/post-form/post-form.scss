@@ -1,4 +1,6 @@
 @use '../../assets/global-styles/color-var';
+@use '../../assets/global-styles/text-var';
+@use '../../assets/global-styles/spacing-var';
 
 .upload-preview .ant-upload-list-item {
   a {
@@ -8,4 +10,8 @@
   button {
     border: none;
   }
+}
+
+.ant-input-data-count {
+  font-size: text-var.$text-small;
 }
