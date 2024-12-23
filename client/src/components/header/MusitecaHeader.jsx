@@ -12,9 +12,16 @@ import "./header.scss";
 import LogoLight from "../../assets/images/logo/musiteca-logo_light.svg";
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 function MusitecaHeader(props) {
   const [showNav, setShowNav] = useState(false);
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    localStorage.removeItem("authToken");
+    navigate("/auth/login");
+  }
 
   const menuItems = [
     {
@@ -30,7 +37,8 @@ function MusitecaHeader(props) {
     },
     {
       key: 3,
-      label: <a href="/auth/login">Log out</a>,
+      label: "Log out",
+      onClick: handleLogout,
     },
   ];
 

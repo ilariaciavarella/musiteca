@@ -8,17 +8,16 @@ import PostForm from "../components/post-form/PostForm.jsx";
 
 export async function loader() {
   const token = localStorage.getItem("authToken");
-  const loggedUser = await axios.get("http://localhost:8080/users/me", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-
-  if (!loggedUser) {
+  if (token) {
+    const loggedUser = await axios.get("http://localhost:8080/users/me", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return { loggedUser };
+  } else {
     return redirect("http://localhost:5173/auth/login");
   }
-
-  return { loggedUser };
 }
 
 function Root() {
