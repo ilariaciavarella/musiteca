@@ -1,4 +1,4 @@
-import { Avatar, Button, Flex } from "antd";
+import { Avatar, Button, Flex, Image } from "antd";
 import PropTypes from "prop-types";
 
 import "./card.scss";
@@ -14,11 +14,6 @@ function InstrumentCard(props) {
 
   return (
     <div className="card">
-      <img
-        src={props.picture}
-        className="instrument-image"
-        alt={`Picture showing ${props.instrument}`}
-      />
       <Flex vertical justify="space-between" className="post-content">
         <div>
           <Flex align="center" className="post-details">
@@ -69,6 +64,17 @@ function InstrumentCard(props) {
           </Button>
         </Flex>
       </Flex>
+      <Image
+        src={props.picture}
+        className="instrument-image"
+        preview={{
+          movable: false,
+          toolbarRender: () => null,
+          getContainer: document.querySelector("#root"),
+          forceRender: true,
+        }}
+        alt={`Picture showing ${props.instrument}`}
+      />
     </div>
   );
 }

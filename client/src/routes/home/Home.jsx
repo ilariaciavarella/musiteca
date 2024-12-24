@@ -30,7 +30,7 @@ function Home() {
   const postItems = posts.map((post) => {
     return (
       <InstrumentCard
-        key={post.id}
+        key={post.age}
         userName={post.author.firstName}
         userLocation={post.author.location}
         picture={post.image}
@@ -56,10 +56,7 @@ function Home() {
       </Flex>
       <div className={styles["feed-post"]}>
         <h3>Explore the latest posts</h3>
-        <div className={styles["post-container"]}>
-          {postItems}
-          {postItems}
-        </div>
+        <div className={styles["post-container"]}>{postItems}</div>
       </div>
     </main>
   );

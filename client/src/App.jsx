@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ConfigProvider } from "antd";
 
@@ -43,16 +42,6 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const [fontSize, setFontSize] = useState(
-    (0.390625 * window.innerWidth) / 100 + 13,
-  );
-
-  useEffect(() => {
-    window.addEventListener("resize", () => {
-      setFontSize((0.390625 * window.innerWidth) / 100 + 13);
-    });
-  }, []);
-
   return (
     <ConfigProvider
       theme={{
@@ -63,7 +52,7 @@ function App() {
           colorError: "#CE1C4B",
           colorLink: "#2E1E6A",
           fontFamily: "'Public Sans', sans-serif, system-ui",
-          fontSize: fontSize,
+          fontSize: 16,
           borderRadius: 8,
         },
         components: {
@@ -73,8 +62,8 @@ function App() {
             headerBg: "#4930AA",
           },
           Button: {
-            contentFontSize: fontSize,
-            contentFontSizeLG: fontSize + 4,
+            contentFontSize: 16,
+            contentFontSizeLG: 20,
             defaultBg: "none",
             defaultShadow: "4px 4px 0 rgba(0, 0, 0, 0.25)",
             fontWeight: 600,
