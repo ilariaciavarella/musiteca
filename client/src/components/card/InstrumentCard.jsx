@@ -3,6 +3,7 @@ import { Avatar, Button, Flex, Image } from "antd";
 import PropTypes from "prop-types";
 import { MusicNotes, ShareFat } from "@phosphor-icons/react";
 import "./card.scss";
+import fallBackImage from "../../assets/images/illustrations/musiteca-fallback_img.jpg";
 
 function InstrumentCard(props) {
   const [showInstrumentDetails, setShowInstrumentDetails] = useState(false);
@@ -74,6 +75,7 @@ function InstrumentCard(props) {
           forceRender: true,
         }}
         alt={`Picture showing ${props.instrument}`}
+        fallback={fallBackImage}
       />
     </div>
   );
