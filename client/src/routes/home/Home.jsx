@@ -8,15 +8,18 @@ import { useEffect } from "react";
 
 export async function loader() {
   const token = localStorage.getItem("authToken");
-  const posts = (
-    await axios.get("http://localhost:8080/api/posts", {
+  return await axios
+    .get("http://localhost:8080/api/posts", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-  ).data;
-
-  return { posts };
+    .then((response) => {
+      return { posts: response.data };
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
 
 function Home() {
