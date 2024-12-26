@@ -1,12 +1,12 @@
+import { useState } from "react";
 import { Avatar, Button, Flex, Image } from "antd";
 import PropTypes from "prop-types";
-
-import "./card.scss";
 import { MusicNotes, ShareFat } from "@phosphor-icons/react";
-import { useState } from "react";
+import "./card.scss";
 
 function InstrumentCard(props) {
   const [showInstrumentDetails, setShowInstrumentDetails] = useState(false);
+  const creationDateDate = new Date(props.creationDate);
 
   function toggleInstrumentDetails() {
     setShowInstrumentDetails((prevState) => !prevState);
@@ -23,7 +23,7 @@ function InstrumentCard(props) {
             <div>
               <div className="post-author">{props.userName}</div>
               <div>
-                {`${props.createdTime} • `}
+                {`${creationDateDate.toLocaleDateString("en-GB")} • `}
                 <strong>{`${props.userLocation}`}</strong>
               </div>
             </div>
@@ -83,7 +83,7 @@ export default InstrumentCard;
 
 InstrumentCard.propTypes = {
   userName: PropTypes.string,
-  createdTime: PropTypes.number,
+  creationDate: PropTypes.string,
   userLocation: PropTypes.string,
   picture: PropTypes.string,
   body: PropTypes.string,

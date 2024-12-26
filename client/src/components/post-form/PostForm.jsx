@@ -80,8 +80,6 @@ function PostForm(props) {
       console.error(error.message);
     }
 
-    console.log("done");
-
     axios
       .post(
         "http://localhost:8080/api/posts/create",
@@ -106,12 +104,12 @@ function PostForm(props) {
       })
       .finally(() => {
         setIsPosting(false);
+        setSelectedImage(null);
+        setFileList([]);
+        postForm.resetFields();
+        props.handleClose();
+        location.reload();
       });
-
-    setSelectedImage(null);
-    setFileList([]);
-    postForm.resetFields();
-    props.handleClose();
   }
 
   return (

@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.net.URL;
+import java.util.Date;
 
 @Document(collection = "posts") @Data @AllArgsConstructor
 @NoArgsConstructor
@@ -30,6 +31,7 @@ public class Post {
     private URL image;
     @NotBlank
     private String body;
+    private Date creationDate;
     private Boolean available;
     @DBRef
     private MusitecaUser borrowedBy;

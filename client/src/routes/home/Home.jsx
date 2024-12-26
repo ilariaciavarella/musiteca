@@ -1,10 +1,10 @@
+import { useEffect } from "react";
+import { useLoaderData, useOutletContext } from "react-router-dom";
+import axios from "axios";
 import { Button, Flex } from "antd";
 import { MegaphoneSimple } from "@phosphor-icons/react";
 import styles from "./home.module.scss";
 import InstrumentCard from "../../components/card/InstrumentCard.jsx";
-import { useLoaderData, useOutletContext } from "react-router-dom";
-import axios from "axios";
-import { useEffect } from "react";
 
 export async function loader() {
   const token = localStorage.getItem("authToken");
@@ -36,6 +36,7 @@ function Home() {
         key={post.age}
         userName={post.author.firstName}
         userLocation={post.author.location}
+        creationDate={post.creationDate}
         picture={post.image}
         body={post.body}
         instrument={post.instrument}

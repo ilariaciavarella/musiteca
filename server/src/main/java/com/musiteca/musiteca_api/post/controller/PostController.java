@@ -12,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.Optional;
 
 @RestController
@@ -37,6 +38,7 @@ public class PostController {
         MusitecaUser currentAuthor = (MusitecaUser) authentication.getPrincipal();
 
         post.setAuthor(currentAuthor);
+        post.setCreationDate(new Date());
         post.setAvailable(true);
 
         return new ResponseEntity<>(postService.savePost(post), HttpStatus.CREATED);
