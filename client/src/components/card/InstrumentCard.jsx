@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Avatar, Button, Flex, Image } from "antd";
 import PropTypes from "prop-types";
-import { MusicNotes, ShareFat } from "@phosphor-icons/react";
+import { MusicNotes } from "@phosphor-icons/react";
 import "./card.scss";
 import fallBackImage from "../../assets/images/illustrations/musiteca-fallback_img.jpg";
 

@@ -1,22 +1,18 @@
 @use '../../assets/global-styles/color-var';
 @use '../../assets/global-styles/spacing-var';
 
-aside:has(.recent-researches) {
+aside:has(.aside-description) {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.recent-researches {
+.aside-description {
   padding: spacing-var.$space-lg spacing-var.$space-rg;
   margin-bottom: auto;
 
-  ul {
-    list-style: none;
+  p {
+    color: color-var.$darkpurple70;
   }
-
-   li button {
-     color: color-var.$darkpurple70;
-   }
 }

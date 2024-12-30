@@ -1,11 +1,6 @@
-import { Layout, Button, ConfigProvider, Menu, Input, Flex } from "antd";
+import { Layout, Button, ConfigProvider, Menu } from "antd";
 const { Header } = Layout;
-import {
-  List,
-  House,
-  PlusCircle,
-  MagnifyingGlass,
-} from "@phosphor-icons/react";
+import { List, House, PlusCircle } from "@phosphor-icons/react";
 
 import "./header.scss";
 
@@ -73,10 +68,6 @@ function MusitecaHeader(props) {
         <div
           className={showNav ? "header-bottom header-visible" : "header-bottom"}
         >
-          <Flex gap="small" className="search-bar-container">
-            <Input type="search" placeholder="Guitar" />
-            <Button type="primary" icon={<MagnifyingGlass size={28} />} />
-          </Flex>
           <Menu
             items={menuItems}
             selectable={false}
