@@ -15,7 +15,7 @@ function Error() {
   const error = useRouteError();
 
   useEffect(() => {
-    console.log(error);
+    console.error(error);
   }, [error]);
 
   return (

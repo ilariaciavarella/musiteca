@@ -97,10 +97,10 @@ function PostForm(props) {
         },
       )
       .then((response) => {
-        console.log(response);
+        console.log(response.status);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.error(error);
       })
       .finally(() => {
         setIsPosting(false);

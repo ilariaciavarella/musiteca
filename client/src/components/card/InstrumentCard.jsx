@@ -40,9 +40,10 @@ function InstrumentCard(props) {
           },
         })
         .then((response) => {
-          console.log(response);
+          console.log(response.status);
           setStatus(1);
-        });
+        })
+        .catch((error) => console.error(error));
     } else if (status === 1) {
       await axios
         .put(`http://localhost:8080/api/posts/${postId}/return`, null, {
@@ -51,11 +52,10 @@ function InstrumentCard(props) {
           },
         })
         .then((response) => {
-          console.log(response);
+          console.log(response.status);
           setStatus(0);
-        });
-    } else {
-      console.log("hi");
+        })
+        .catch((error) => console.error(error));
     }
   }
 

@@ -27,14 +27,14 @@ function SignUp() {
         },
       )
       .then((response) => {
-        console.log(response);
+        console.log(response.status);
         setIsValid(true);
         setIsModalOpen(true);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.error(error);
         setIsValid(false);
-        setErrorMsg(err.response.data.description);
+        setErrorMsg(error.response.data.description);
         setIsModalOpen(false);
       });
   }

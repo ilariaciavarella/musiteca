@@ -25,15 +25,15 @@ function Login() {
         },
       )
       .then((response) => {
-        console.log(response);
+        console.log(response.status);
         setIsValid(true);
         localStorage.setItem("authToken", response.data.token);
         navigate("/");
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.error(error);
         setIsValid(false);
-        setErrorMsg(err.response.data.description);
+        setErrorMsg(error.response.data.description);
       });
   }
 
