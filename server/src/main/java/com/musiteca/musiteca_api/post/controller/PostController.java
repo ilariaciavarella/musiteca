@@ -33,6 +33,14 @@ public class PostController {
         return new ResponseEntity<>(postService.findPostById(id), HttpStatus.OK);
     }
 
+    @GetMapping("/your-instruments")
+    public ResponseEntity<Iterable<Post>> getBorrowedPosts() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        MusitecaUser currentUser = (MusitecaUser) authentication.getPrincipal();
+
+        return new ResponseEntity<>(postService.findPostByBorrowingUser(currentUser), HttpStatus.OK);
+    }
+
     @PostMapping("/create")
     public ResponseEntity<Post> createPost(@RequestBody @Valid Post post) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

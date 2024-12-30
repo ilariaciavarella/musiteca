@@ -1,14 +1,12 @@
-import { useLoaderData, useOutletContext } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import axios from "axios";
-import { Button, Flex } from "antd";
-import { MegaphoneSimple } from "@phosphor-icons/react";
-import styles from "./home.module.scss";
+import styles from "./borrowed.module.scss";
 import InstrumentCard from "../../components/card/InstrumentCard.jsx";
 
 export async function loader() {
   const token = localStorage.getItem("authToken");
   return await axios
-    .get("http://localhost:8080/api/posts", {
+    .get("http://localhost:8080/api/posts/your-instruments", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -21,8 +19,7 @@ export async function loader() {
     });
 }
 
-function Home() {
-  const [setIsFormOpen, user] = useOutletContext();
+function Borrowed() {
   const { posts } = useLoaderData();
 
   const postItems = posts.map((post) => {
@@ -47,22 +44,13 @@ function Home() {
 
   return (
     <main className={styles["main-container"]}>
-      <Flex wrap align="center" justify="space-between" gap="middle">
-        <div className={styles["greeting"]}>Hi {user.firstName}!</div>
-        <Button
-          type="primary"
-          icon={<MegaphoneSimple size={20} />}
-          onClick={() => setIsFormOpen(true)}
-        >
-          Lend your instrument
-        </Button>
-      </Flex>
-      <div className={styles["feed-post"]}>
-        <h3>Explore the latest posts</h3>
-        <div className={styles["post-container"]}>{postItems}</div>
-      </div>
+      <h2>The instruments you borrowed</h2>
+      {posts.length === 0 && (
+        <p>The musical instruments you borrowed will appear here</p>
+      )}
+      <div className={styles["post-container"]}>{postItems}</div>
     </main>
   );
 }
 
-export default Home;
+export default Borrowed;

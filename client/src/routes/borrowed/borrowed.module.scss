@@ -1,0 +1,21 @@
+@use '../../assets/global-styles/color-var';
+@use '../../assets/global-styles/text-var';
+@use '../../assets/global-styles/spacing-var';
+
+.main-container {
+  padding: spacing-var.$space-lg spacing-var.$space-rg;
+  max-height: calc(100vh - 88px);
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.post-container {
+  container: card-container / inline-size;
+}
+
+@media only screen and (min-width: 768px){
+  .main-container {
+    padding: spacing-var.$space-lg;
+    max-height: 100vh;
+  }
+}

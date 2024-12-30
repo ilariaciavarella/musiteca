@@ -6,6 +6,9 @@ import "./assets/global-styles/App.scss";
 import Root, { loader as rootLoader } from "./routes/Root.jsx";
 import Error from "./routes/error/Error.jsx";
 import Home, { loader as postsLoader } from "./routes/home/Home.jsx";
+import Borrowed, {
+  loader as borrowedPostsLoader,
+} from "./routes/borrowed/Borrowed.jsx";
 import Login from "./routes/auth/login/Login.jsx";
 import Auth from "./routes/auth/Auth.jsx";
 import SignUp from "./routes/auth/sign-up/SignUp.jsx";
@@ -21,6 +24,11 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
         loader: postsLoader,
+      },
+      {
+        path: "/borrowed",
+        element: <Borrowed />,
+        loader: borrowedPostsLoader,
       },
     ],
   },

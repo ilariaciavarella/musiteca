@@ -1,6 +1,6 @@
 import { Layout, Button, ConfigProvider, Menu } from "antd";
 const { Header } = Layout;
-import { List, House, PlusCircle } from "@phosphor-icons/react";
+import { List, House, PlusCircle, Guitar } from "@phosphor-icons/react";
 
 import "./header.scss";
 
@@ -21,7 +21,7 @@ function MusitecaHeader(props) {
   const menuItems = [
     {
       key: 1,
-      label: <a href="/home">Home</a>,
+      label: <a href="/">Home</a>,
       icon: <House size={20} />,
     },
     {
@@ -32,6 +32,11 @@ function MusitecaHeader(props) {
     },
     {
       key: 3,
+      label: <a href="/borrowed">Borrowed</a>,
+      icon: <Guitar size={20} />,
+    },
+    {
+      key: 4,
       label: "Log out",
       onClick: handleLogout,
     },
