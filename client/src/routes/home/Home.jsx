@@ -28,13 +28,15 @@ function Home() {
 
   useEffect(() => {
     console.log(posts);
-  }, []);
+  }, [posts]);
 
   const postItems = posts.map((post) => {
     return (
       <InstrumentCard
-        key={post.age}
+        key={post.postId}
+        postId={post.postId}
         userName={post.author.firstName}
+        userEmail={post.author.email}
         userLocation={post.author.location}
         creationDate={post.creationDate}
         picture={post.image}
@@ -42,6 +44,8 @@ function Home() {
         instrument={post.instrument}
         brand={post.brand}
         age={post.age}
+        available={post.available}
+        borrowedBy={post.borrowedBy}
       />
     );
   });

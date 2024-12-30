@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { Avatar, Button, Flex, Image } from "antd";
 import PropTypes from "prop-types";
 import { MusicNotes, ShareFat } from "@phosphor-icons/react";
@@ -7,10 +8,55 @@ import fallBackImage from "../../assets/images/illustrations/musiteca-fallback_i
 
 function InstrumentCard(props) {
   const [showInstrumentDetails, setShowInstrumentDetails] = useState(false);
-  const creationDateDate = new Date(props.creationDate);
+  const [status, setStatus] = useState(0);
+  const dateOfCreation = new Date(props.creationDate);
+
+  useEffect(() => {
+    if (props.available) {
+      setStatus(0);
+    } else if (
+      !props.available &&
+      props.borrowedBy.email !== localStorage.getItem("currentUserEmail")
+    ) {
+      setStatus(-1);
+    } else if (
+      !props.available &&
+      props.borrowedBy.email === localStorage.getItem("currentUserEmail")
+    ) {
+      setStatus(1);
+    }
+  }, [props.available]);
 
   function toggleInstrumentDetails() {
     setShowInstrumentDetails((prevState) => !prevState);
+  }
+
+  async function handleBorrow(postId) {
+    if (status === 0) {
+      await axios
+        .put(`http://localhost:8080/api/posts/${postId}/borrow`, null, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        })
+        .then((response) => {
+          console.log(response);
+          setStatus(1);
+        });
+    } else if (status === 1) {
+      await axios
+        .put(`http://localhost:8080/api/posts/${postId}/return`, null, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        })
+        .then((response) => {
+          console.log(response);
+          setStatus(0);
+        });
+    } else {
+      console.log("hi");
+    }
   }
 
   return (
@@ -24,7 +70,7 @@ function InstrumentCard(props) {
             <div>
               <div className="post-author">{props.userName}</div>
               <div>
-                {`${creationDateDate.toLocaleDateString("en-GB")} • `}
+                {`${dateOfCreation.toLocaleDateString("en-GB")} • `}
                 <strong>{`${props.userLocation}`}</strong>
               </div>
             </div>
@@ -55,14 +101,20 @@ function InstrumentCard(props) {
           )}
         </div>
         <Flex gap="middle" className="post-actions">
-          <Button icon={<ShareFat size={28} />} />
-          <Button
-            type="primary"
-            className="main-action"
-            icon={<MusicNotes size={28} />}
-          >
-            Borrow
-          </Button>
+          {props.userEmail !== localStorage.getItem("currentUserEmail") && (
+            <Button
+              type="primary"
+              className={status === 1 && "borrowed-btn"}
+              block
+              icon={<MusicNotes size={28} />}
+              onClick={() => {
+                handleBorrow(props.postId);
+              }}
+              disabled={status === -1}
+            >
+              {status === 1 ? "Return" : "Borrow"}
+            </Button>
+          )}
         </Flex>
       </Flex>
       <Image
@@ -84,7 +136,9 @@ function InstrumentCard(props) {
 export default InstrumentCard;
 
 InstrumentCard.propTypes = {
+  postId: PropTypes.string,
   userName: PropTypes.string,
+  userEmail: PropTypes.string,
   creationDate: PropTypes.string,
   userLocation: PropTypes.string,
   picture: PropTypes.string,
@@ -92,4 +146,6 @@ InstrumentCard.propTypes = {
   instrument: PropTypes.string,
   brand: PropTypes.string,
   age: PropTypes.number,
+  available: PropTypes.bool,
+  borrowedBy: PropTypes.object,
 };

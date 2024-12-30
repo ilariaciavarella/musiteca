@@ -2,7 +2,8 @@ $ivory: #F9FAED;
 $green: #E2EE00;
 $purple: #4930AA;
 $darkpurple: #120C2A;
-$midpurple: #2E1E6A;
+$midpurple: darken($purple, 20%);
+$lightpurple: lighten($purple, 20%);
 $error: #C9657F;
 
 $darkpurple70: transparentize($darkpurple, 0.3);

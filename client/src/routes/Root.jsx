@@ -20,6 +20,7 @@ export async function loader() {
       },
     })
     .then((response) => {
+      localStorage.setItem("currentUserEmail", response.data.email);
       return { loggedUser: response.data };
     })
     .catch((error) => {

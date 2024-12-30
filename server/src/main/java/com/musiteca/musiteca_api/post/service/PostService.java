@@ -24,9 +24,14 @@ public class PostService {
         return postRepository.findById(id);
     }
 
-    public Iterable<Post> findPostByAuthor(MusitecaUser user){
+    public Optional<Post> findPostByPostId(String postId){
+        log.info("Fetching post with post id {}", postId);
+        return postRepository.findByPostId(postId);
+    }
+
+    public Iterable<Post> findPostByBorrowingUser(MusitecaUser user){
         log.info("Fetching post by author {}", user.getEmail());
-        return postRepository.findByAuthor(user);
+        return postRepository.findByBorrowedBy(user);
     }
 
     public Post savePost(Post post){

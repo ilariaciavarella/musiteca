@@ -19,6 +19,7 @@ import java.util.Date;
 public class Post {
     @Id
     private ObjectId id;
+    private String postId;
     @DBRef
     private MusitecaUser author;
     @NotBlank

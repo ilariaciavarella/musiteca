@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/posts")
@@ -37,6 +38,7 @@ public class PostController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         MusitecaUser currentAuthor = (MusitecaUser) authentication.getPrincipal();
 
+        post.setPostId(UUID.randomUUID().toString());
         post.setAuthor(currentAuthor);
         post.setCreationDate(new Date());
         post.setAvailable(true);
@@ -44,9 +46,9 @@ public class PostController {
         return new ResponseEntity<>(postService.savePost(post), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}/borrow")
-    public ResponseEntity<Post> borrowInstrument(@PathVariable ObjectId id) {
-        Post post = postService.findPostById(id).orElseThrow();
+    @PutMapping("/{postId}/borrow")
+    public ResponseEntity<Post> borrowInstrument(@PathVariable String postId) {
+        Post post = postService.findPostByPostId(postId).orElseThrow();
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         MusitecaUser borrowingUser = (MusitecaUser) authentication.getPrincipal();
@@ -54,9 +56,9 @@ public class PostController {
         return new ResponseEntity<>(postService.assignPostToUser(post, borrowingUser), HttpStatus.OK);
     }
 
-    @PutMapping("/{id}/return")
-    public ResponseEntity<Post> returnInstrument(@PathVariable ObjectId id) {
-        Post post = postService.findPostById(id).orElseThrow();
+    @PutMapping("/{postId}/return")
+    public ResponseEntity<Post> returnInstrument(@PathVariable String postId) {
+        Post post = postService.findPostByPostId(postId).orElseThrow();
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         MusitecaUser borrowingUser = (MusitecaUser) authentication.getPrincipal();

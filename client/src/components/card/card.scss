@@ -49,10 +49,11 @@
 
 .post-actions {
   margin-top: spacing-var.$space-md;
+}
 
-  .main-action {
-    flex-grow: 1;
-  }
+button.borrowed-btn {
+  background-color: color-var.$lightpurple;
+  color: color-var.$darkpurple;
 }
 
 @container card-container (min-width: 580px) {
