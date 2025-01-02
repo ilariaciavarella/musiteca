@@ -13,6 +13,22 @@
   container: card-container / inline-size;
 }
 
+.greeting {
+  font-family: text-var.$headings-font;
+  font-size: text-var.$h2-size;
+  font-weight: text-var.$weight-bold;
+  line-height: 110%;
+}
+
+.feed-post {
+  margin-top: spacing-var.$space-xl;
+}
+
+.spinner {
+  display: block;
+  margin: spacing-var.$space-sm auto;
+}
+
 @media only screen and (min-width: 768px){
   .main-container {
     padding: spacing-var.$space-lg;

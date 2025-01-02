@@ -6,7 +6,7 @@ import "../../assets/global-styles/main.scss";
 export async function loader() {
   const token = localStorage.getItem("authToken");
   return await axios
-    .get("http://localhost:8080/api/posts/borrowed-instruments", {
+    .get("http://localhost:8080/api/posts/lending-instruments", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -19,7 +19,7 @@ export async function loader() {
     });
 }
 
-function Borrowed() {
+function Lending() {
   const { posts } = useLoaderData();
 
   const postItems = posts.map((post) => {
@@ -44,13 +44,13 @@ function Borrowed() {
 
   return (
     <main className="main-container">
-      <h2>The instruments you borrowed</h2>
+      <h2>Instruments you are lending</h2>
       {posts.length === 0 && (
-        <p>The musical instruments you borrowed will appear here</p>
+        <p>The musical instruments you are willing to lend will appear here</p>
       )}
       <div className="post-container">{postItems}</div>
     </main>
   );
 }
 
-export default Borrowed;
+export default Lending;

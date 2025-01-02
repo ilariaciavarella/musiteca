@@ -6,6 +6,9 @@ import Home, { loader as postsLoader } from "./routes/home/Home.jsx";
 import Borrowed, {
   loader as borrowedPostsLoader,
 } from "./routes/borrowed/Borrowed.jsx";
+import Lending, {
+  loader as lendingPostsLoader,
+} from "./routes/lending/Lending.jsx";
 import Login from "./routes/auth/login/Login.jsx";
 import Auth from "./routes/auth/Auth.jsx";
 import SignUp from "./routes/auth/sign-up/SignUp.jsx";
@@ -27,6 +30,11 @@ const router = createBrowserRouter([
         path: "/borrowed",
         element: <Borrowed />,
         loader: borrowedPostsLoader,
+      },
+      {
+        path: "/lending",
+        element: <Lending />,
+        loader: lendingPostsLoader,
       },
     ],
   },

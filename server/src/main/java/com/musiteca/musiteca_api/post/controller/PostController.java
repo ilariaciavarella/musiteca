@@ -33,12 +33,20 @@ public class PostController {
         return new ResponseEntity<>(postService.findPostById(id), HttpStatus.OK);
     }
 
-    @GetMapping("/your-instruments")
+    @GetMapping("/borrowed-instruments")
     public ResponseEntity<Iterable<Post>> getBorrowedPosts() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         MusitecaUser currentUser = (MusitecaUser) authentication.getPrincipal();
 
         return new ResponseEntity<>(postService.findPostByBorrowingUser(currentUser), HttpStatus.OK);
+    }
+
+    @GetMapping("/lending-instruments")
+    public ResponseEntity<Iterable<Post>> getLendingPosts() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        MusitecaUser currentUser = (MusitecaUser) authentication.getPrincipal();
+
+        return new ResponseEntity<>(postService.findPostByAuthor(currentUser), HttpStatus.OK);
     }
 
     @PostMapping("/create")

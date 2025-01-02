@@ -3,7 +3,13 @@ import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Layout, Button, ConfigProvider, Menu } from "antd";
 const { Header } = Layout;
-import { List, House, PlusCircle, Guitar } from "@phosphor-icons/react";
+import {
+  List,
+  House,
+  Guitar,
+  CassetteTape,
+  MegaphoneSimple,
+} from "@phosphor-icons/react";
 import LogoLight from "../../assets/images/logo/musiteca-logo_light.svg";
 import "./header.scss";
 
@@ -24,17 +30,25 @@ function MusitecaHeader(props) {
     },
     {
       key: 2,
-      label: "Lend",
-      icon: <PlusCircle size={20} />,
-      onClick: props.openPostForm,
+      label: <a href="/borrowed">Borrowed</a>,
+      icon: <CassetteTape size={20} />,
     },
     {
       key: 3,
-      label: <a href="/borrowed">Borrowed</a>,
+      label: <a href="/lending">Lending</a>,
       icon: <Guitar size={20} />,
     },
     {
+      type: "divider",
+    },
+    {
       key: 4,
+      label: "Lend your instrument",
+      icon: <MegaphoneSimple size={20} />,
+      onClick: props.openPostForm,
+    },
+    {
+      key: 5,
       label: "Log out",
       onClick: handleLogout,
     },

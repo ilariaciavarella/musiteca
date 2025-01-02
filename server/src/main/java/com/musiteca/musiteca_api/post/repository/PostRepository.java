@@ -12,4 +12,5 @@ import java.util.Optional;
 public interface PostRepository extends MongoRepository<Post, ObjectId> {
     Optional<Post> findByPostId(String postId);
     Iterable<Post> findByBorrowedBy(MusitecaUser user);
+    Iterable<Post> findByAuthor(MusitecaUser user);
 }
