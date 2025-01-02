@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import {
   Button,
   Col,
@@ -10,7 +11,6 @@ import {
   Upload,
   Spin,
 } from "antd";
-import axios from "axios";
 import PropTypes from "prop-types";
 import { storage } from "../../assets/utils/firebase.js";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";

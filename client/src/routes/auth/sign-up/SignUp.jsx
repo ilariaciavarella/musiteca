@@ -1,8 +1,8 @@
-import styles from "../auth.module.scss";
-import { Button, Form, Input, Row, Col, Alert } from "antd";
-import axios from "axios";
 import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
+import axios from "axios";
+import { Button, Form, Input, Row, Col, Alert } from "antd";
+import styles from "../auth.module.scss";
 
 function SignUp() {
   const [isValid, setIsValid] = useState(true);

@@ -1,5 +1,4 @@
 import MusitecaFooter from "../footer/MusitecaFooter.jsx";
-
 import "./aside.scss";
 
 function MusitecaAside() {

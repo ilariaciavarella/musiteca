@@ -1,13 +1,11 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import { Layout, Button, ConfigProvider, Menu } from "antd";
 const { Header } = Layout;
 import { List, House, PlusCircle, Guitar } from "@phosphor-icons/react";
-
-import "./header.scss";
-
 import LogoLight from "../../assets/images/logo/musiteca-logo_light.svg";
-import { useState } from "react";
-import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import "./header.scss";
 
 function MusitecaHeader(props) {
   const [showNav, setShowNav] = useState(false);

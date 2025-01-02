@@ -1,9 +1,7 @@
 import PropTypes from "prop-types";
 import { LinkedinLogo, InstagramLogo, GithubLogo } from "@phosphor-icons/react";
 import { Layout, Button, Space, Flex } from "antd";
-
 const { Footer } = Layout;
-
 import "./footer.scss";
 
 function MusitecaFooter(props) {

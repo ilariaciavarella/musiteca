@@ -1,15 +1,11 @@
 import { useEffect } from "react";
 import { useRouteError } from "react-router-dom";
 import { Layout, Row, Col, Button } from "antd";
-
 const { Content } = Layout;
-
-import styles from "./error.module.scss";
-
 import MusitecaFooter from "../../components/footer/MusitecaFooter.jsx";
-
 import errorImage from "../../assets/images/illustrations/musiteca-error_illustration.png";
 import LogoDark from "../../assets/images/logo/musiteca-logo_dark.svg";
+import styles from "./error.module.scss";
 
 function Error() {
   const error = useRouteError();

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Outlet, redirect, useLoaderData } from "react-router-dom";
-import { Col, Layout, Row } from "antd";
 import axios from "axios";
+import { Col, Layout, Row } from "antd";
 import MusitecaHeader from "../components/header/MusitecaHeader.jsx";
 import MusitecaAside from "../components/aside/MusitecaAside.jsx";
 import PostForm from "../components/post-form/PostForm.jsx";
