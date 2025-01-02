@@ -1,7 +1,6 @@
 package com.musiteca.musiteca_api.exceptions;
 
 import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.JwtException;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ProblemDetail;
 import org.springframework.security.access.AccessDeniedException;
@@ -18,55 +17,62 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ProblemDetail handleSecurityException(Exception e) {
-        ProblemDetail errorDetail = null;
+        ProblemDetail errorDetail;
 
         e.printStackTrace();
 
-        if (e instanceof BadCredentialsException) {
-            errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(401), e.getMessage());
-            errorDetail.setProperty("description", "Incorrect username or password");
+        switch (e) {
+            case BadCredentialsException badCredentialsException -> {
+                errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(401), e.getMessage());
+                errorDetail.setProperty("description", "Incorrect username or password");
 
-            return errorDetail;
-        }
+                return errorDetail;
+            }
 
-        if (e instanceof AccountStatusException) {
-            errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(403), e.getMessage());
-            errorDetail.setProperty("description", "Locked account");
+            case AccountStatusException accountStatusException -> {
+                errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(403), e.getMessage());
+                errorDetail.setProperty("description", "Locked account");
 
-            return errorDetail;
-        }
+                return errorDetail;
+            }
 
-        if (e instanceof AccessDeniedException) {
-            errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(403), e.getMessage());
-            errorDetail.setProperty("description", "You are not allowed to access this resource");
+            case AccessDeniedException accessDeniedException -> {
+                errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(403), e.getMessage());
+                errorDetail.setProperty("description", "You are not allowed to access this resource");
 
-            return errorDetail;
-        }
+                return errorDetail;
+            }
 
-        if (e instanceof SignatureException) {
-            errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(403), e.getMessage());
-            errorDetail.setProperty("description", "Invalid JWT Signature");
+            case SignatureException signatureException -> {
+                errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(403), e.getMessage());
+                errorDetail.setProperty("description", "Invalid JWT Signature");
 
-            return errorDetail;
-        }
+                return errorDetail;
+            }
 
-        if (e instanceof ExpiredJwtException) {
-            errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(403), e.getMessage());
-            errorDetail.setProperty("description", "Expired JWT");
+            case ExpiredJwtException expiredJwtException -> {
+                errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(403), e.getMessage());
+                errorDetail.setProperty("description", "Expired JWT");
 
-            return errorDetail;
-        }
+                return errorDetail;
+            }
 
-        if (e instanceof MethodArgumentNotValidException) {
-            errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(403), e.getMessage());
-            errorDetail.setProperty("description", "Invalid input provided");
-        }
+            case MethodArgumentNotValidException methodArgumentNotValidException -> {
+                errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(403), e.getMessage());
+                errorDetail.setProperty("description", "Invalid input provided");
+            }
 
-        if (e == null) {
-            errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(500), e.getMessage());
-            errorDetail.setProperty("description", "Internal Server Error");
+            case ExistingUserException existingUserException -> {
+                errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(409), e.getMessage());
+                errorDetail.setProperty("description", "A user with this email already exists");
+            }
 
-            return errorDetail;
+            default -> {
+                errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(500), e.getMessage());
+                errorDetail.setProperty("description", "Internal Server Error");
+
+                return errorDetail;
+            }
         }
 
         return errorDetail;

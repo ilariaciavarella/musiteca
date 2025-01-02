@@ -2,6 +2,7 @@ package com.musiteca.musiteca_api.authentication.service;
 
 import com.musiteca.musiteca_api.authentication.dtos.LoginUserDto;
 import com.musiteca.musiteca_api.authentication.dtos.RegisterUserDto;
+import com.musiteca.musiteca_api.exceptions.ExistingUserException;
 import com.musiteca.musiteca_api.user.model.MusitecaUser;
 import com.musiteca.musiteca_api.user.repository.RoleRepository;
 import com.musiteca.musiteca_api.user.repository.UserRepository;
@@ -9,6 +10,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class AuthenticationService {
@@ -26,6 +29,11 @@ public class AuthenticationService {
     }
 
     public MusitecaUser signUp (RegisterUserDto input) {
+        String email = input.getEmail();
+        if (userRepository.findByEmail(email).isPresent()) {
+            throw new ExistingUserException("An account with this email already exists");
+        }
+
         MusitecaUser user = new MusitecaUser(
                 input.getFirstName(),
                 input.getLastName(),

@@ -1,5 +1,5 @@
 import styles from "../auth.module.scss";
-import { Button, Form, Input, Row, Col, Alert, Modal } from "antd";
+import { Button, Form, Input, Row, Col, Alert } from "antd";
 import axios from "axios";
 import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
