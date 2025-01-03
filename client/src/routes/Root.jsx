@@ -10,11 +10,11 @@ export async function loader() {
   const token = localStorage.getItem("authToken");
 
   if (!token) {
-    return redirect("http://localhost:5173/auth/login");
+    return redirect("/auth/login");
   }
 
   return await axios
-    .get("http://localhost:8080/users/me", {
+    .get(`${import.meta.env.VITE_API_URL}/users/me`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -25,7 +25,7 @@ export async function loader() {
     })
     .catch((error) => {
       console.error(error);
-      return redirect("http://localhost:5173/auth/login");
+      return redirect("/auth/login");
     });
 }
 

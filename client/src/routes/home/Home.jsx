@@ -12,7 +12,7 @@ import "../../assets/global-styles/main.scss";
 export async function loader() {
   const token = localStorage.getItem("authToken");
   return await axios
-    .get("http://localhost:8080/api/posts", {
+    .get(`${import.meta.env.VITE_API_URL}/api/posts`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

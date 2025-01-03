@@ -34,6 +34,5 @@ public class Post {
     private String body;
     private Date creationDate;
     private Boolean available;
-    @DBRef
-    private MusitecaUser borrowedBy;
+    private UserSummary borrowedBy;
 }

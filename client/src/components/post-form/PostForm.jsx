@@ -82,7 +82,7 @@ function PostForm(props) {
 
     axios
       .post(
-        "http://localhost:8080/api/posts/create",
+        `${import.meta.env.VITE_API_URL}/api/posts/create`,
         {
           instrument: instrument,
           brand: brand,

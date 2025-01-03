@@ -3,6 +3,8 @@ package com.musiteca.musiteca_api.post.service;
 import com.musiteca.musiteca_api.post.model.Post;
 import com.musiteca.musiteca_api.post.repository.PostRepository;
 import com.musiteca.musiteca_api.user.model.MusitecaUser;
+import com.musiteca.musiteca_api.user.model.UserSummary;
+import com.musiteca.musiteca_api.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
@@ -13,6 +15,7 @@ import java.util.Optional;
 @Service @RequiredArgsConstructor @Slf4j
 public class PostService {
     private final PostRepository postRepository;
+    private final UserRepository userRepository;
 
     public Iterable<Post> findAllPosts(){
         log.info("Fetching all posts");
@@ -31,12 +34,15 @@ public class PostService {
 
     public Iterable<Post> findPostByBorrowingUser(MusitecaUser user){
         log.info("Fetching posts borrowed by {}", user.getEmail());
-        return postRepository.findByBorrowedBy(user);
+        UserSummary userSummary = userRepository.findUserSummaryById(user.getId()).orElseThrow();
+
+        return postRepository.findByBorrowedBy(userSummary);
     }
 
     public Iterable<Post> findPostByAuthor(MusitecaUser user){
         log.info("Fetching post by author: {}", user.getEmail());
-        return postRepository.findByAuthor(user);
+        UserSummary userSummary = userRepository.findUserSummaryById(user.getId()).orElseThrow();
+        return postRepository.findByAuthor(userSummary);
     }
 
     public Post savePost(Post post){
@@ -46,7 +52,8 @@ public class PostService {
 
     public Post assignPostToUser(Post post, MusitecaUser user){
         log.info("Assigning post to user {}", user.getEmail());
-        post.setBorrowedBy(user);
+        UserSummary userSummary = userRepository.findUserSummaryById(user.getId()).orElseThrow();
+        post.setBorrowedBy(userSummary);
         post.setAvailable(false);
         return postRepository.save(post);
     }

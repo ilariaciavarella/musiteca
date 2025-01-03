@@ -12,7 +12,7 @@ function Login() {
   function loginFormSubmit({ email, password }) {
     axios
       .post(
-        "http://localhost:8080/auth/login",
+        `${import.meta.env.VITE_API_URL}/auth/login`,
         {
           email: email,
           password: password,

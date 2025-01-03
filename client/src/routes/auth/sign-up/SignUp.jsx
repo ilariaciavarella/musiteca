@@ -12,7 +12,7 @@ function SignUp() {
   function handleFinish({ firstName, lastName, email, password, location }) {
     axios
       .post(
-        "http://localhost:8080/auth/signup",
+        `${import.meta.env.VITE_API_URL}/auth/signup`,
         {
           firstName: firstName,
           lastName: lastName,

@@ -34,11 +34,15 @@ function InstrumentCard(props) {
   async function handleBorrow(postId) {
     if (status === 0) {
       await axios
-        .put(`http://localhost:8080/api/posts/${postId}/borrow`, null, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        .put(
+          `${import.meta.env.VITE_API_URL}/api/posts/${postId}/borrow`,
+          null,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+            },
           },
-        })
+        )
         .then((response) => {
           console.log(response.status);
           setStatus(1);
@@ -46,11 +50,15 @@ function InstrumentCard(props) {
         .catch((error) => console.error(error));
     } else if (status === 1) {
       await axios
-        .put(`http://localhost:8080/api/posts/${postId}/return`, null, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        .put(
+          `${import.meta.env.VITE_API_URL}/api/posts/${postId}/return`,
+          null,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+            },
           },
-        })
+        )
         .then((response) => {
           console.log(response.status);
           setStatus(0);

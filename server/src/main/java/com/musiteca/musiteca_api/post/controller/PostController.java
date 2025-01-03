@@ -81,9 +81,6 @@ public class PostController {
     public ResponseEntity<Post> returnInstrument(@PathVariable String postId) {
         Post post = postService.findPostByPostId(postId).orElseThrow();
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        MusitecaUser borrowingUser = (MusitecaUser) authentication.getPrincipal();
-
         return new ResponseEntity<>(postService.releasePost(post), HttpStatus.OK);
     }
 }
