@@ -1,6 +1,7 @@
 package com.musiteca.musiteca_api.post.model;
 
 import com.musiteca.musiteca_api.user.model.MusitecaUser;
+import com.musiteca.musiteca_api.user.model.UserSummary;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -20,8 +21,7 @@ public class Post {
     @Id
     private ObjectId id;
     private String postId;
-    @DBRef
-    private MusitecaUser author;
+    private UserSummary author;
     @NotBlank
     private String instrument;
     @NotBlank

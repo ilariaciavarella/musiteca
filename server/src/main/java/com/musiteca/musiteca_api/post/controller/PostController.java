@@ -3,6 +3,8 @@ package com.musiteca.musiteca_api.post.controller;
 import com.musiteca.musiteca_api.post.model.Post;
 import com.musiteca.musiteca_api.post.service.PostService;
 import com.musiteca.musiteca_api.user.model.MusitecaUser;
+import com.musiteca.musiteca_api.user.model.UserSummary;
+import com.musiteca.musiteca_api.user.repository.UserRepository;
 import jakarta.validation.Valid;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ public class PostController {
 
     @Autowired
     private PostService postService;
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping
     public ResponseEntity<Iterable<Post>> getAllPosts() {
@@ -52,10 +56,11 @@ public class PostController {
     @PostMapping("/create")
     public ResponseEntity<Post> createPost(@RequestBody @Valid Post post) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        MusitecaUser currentAuthor = (MusitecaUser) authentication.getPrincipal();
+        MusitecaUser currentUser = (MusitecaUser) authentication.getPrincipal();
+        UserSummary author = userRepository.findUserSummaryById(currentUser.getId()).orElseThrow();
 
         post.setPostId(UUID.randomUUID().toString());
-        post.setAuthor(currentAuthor);
+        post.setAuthor(author);
         post.setCreationDate(new Date());
         post.setAvailable(true);
 

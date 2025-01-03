@@ -7,13 +7,6 @@ spring:
       database: ${MONGODB_DATABASE}
       uri: mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@${MONGODB_CLUSTER}
 
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:9000
-          audiences: musiteca-client
-
 logging:
   level:
     org.springframework.security: TRACE
