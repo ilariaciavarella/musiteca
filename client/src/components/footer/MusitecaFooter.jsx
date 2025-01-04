@@ -14,6 +14,7 @@ function MusitecaFooter(props) {
         <Space size="small" className="social-links">
           <Button
             href="https://www.linkedin.com/in/ilaria-ciavarella"
+            target="_blank"
             icon={<LinkedinLogo size={28} />}
             type="link"
             color={props.light ? "default" : "primary"}
@@ -21,12 +22,14 @@ function MusitecaFooter(props) {
           />
           <Button
             href="https://github.com/ilariaciavarella"
+            target="_blank"
             icon={<GithubLogo size={28} />}
             type="link"
             className="btn-invisible"
           />
           <Button
             href="https://www.instagram.com/lil.ciavarella/"
+            target="_blank"
             icon={<InstagramLogo size={28} />}
             type="link"
             className="btn-invisible"
