@@ -62,11 +62,12 @@ function Login() {
               {
                 required: true,
                 message: "Please, insert your email",
+                type: "email",
               },
             ]}
             className={styles["login-item"]}
           >
-            <Input placeholder="emily.a@gmail.com" />
+            <Input placeholder="emily.a@gmail.com" type="email" />
           </Form.Item>
           <Form.Item
             label="Password"

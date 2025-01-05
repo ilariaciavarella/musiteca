@@ -108,7 +108,7 @@ function SignUp() {
                 ]}
                 className={styles["login-item"]}
               >
-                <Input placeholder="emily.a@gmail.com" />
+                <Input placeholder="emily.a@gmail.com" type="email" />
               </Form.Item>
             </Col>
             <Col xs={24} lg={12}>
