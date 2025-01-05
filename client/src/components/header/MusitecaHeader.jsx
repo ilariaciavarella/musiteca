@@ -12,12 +12,22 @@ import {
 } from "@phosphor-icons/react";
 import LogoLight from "../../assets/images/logo/musiteca-logo_light.svg";
 import "./header.scss";
+import axios from "axios";
 
 function MusitecaHeader(props) {
   const [showNav, setShowNav] = useState(false);
   const navigate = useNavigate();
 
-  function handleLogout() {
+  async function handleLogout() {
+    axios
+      .post(`${import.meta.env.VITE_API_URL}/auth/logout`, null, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.status);
+      });
     localStorage.removeItem("authToken");
     navigate("/auth/login");
   }
