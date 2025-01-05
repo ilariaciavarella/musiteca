@@ -74,7 +74,9 @@ function MusitecaHeader(props) {
     >
       <Header className="musiteca-header">
         <div className="header-top">
-          <img src={LogoLight} alt="Musiteca Logo" className="header-logo" />
+          <a href="/">
+            <img src={LogoLight} alt="Musiteca Logo" className="header-logo" />
+          </a>
           <Button
             type="primary"
             icon={<List size={28} />}
