@@ -69,6 +69,7 @@ function MusitecaHeader(props) {
 
   function toggleNav() {
     setShowNav((prevShowNav) => !prevShowNav);
+    document.querySelector("#root").classList.toggle("no-scroll");
   }
 
   return (

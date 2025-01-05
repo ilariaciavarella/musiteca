@@ -93,3 +93,8 @@ p {
 .input {
   border-width: 2px;
 }
+
+.no-scroll {
+  max-height: 100dvh;
+  overflow: hidden;
+}
