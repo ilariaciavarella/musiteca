@@ -27,9 +27,12 @@ function MusitecaHeader(props) {
       })
       .then((response) => {
         console.log(response.status);
+        localStorage.removeItem("authToken");
+        navigate("/auth/login");
+      })
+      .catch((error) => {
+        console.error(error);
       });
-    localStorage.removeItem("authToken");
-    navigate("/auth/login");
   }
 
   const menuItems = [
