@@ -108,7 +108,13 @@ function InstrumentCard(props) {
             </ul>
           )}
         </div>
-        <Flex gap="middle" className="post-actions">
+        <div className="borrow-action">
+          {props.borrowedBy && (
+            <p>
+              <strong>Borrowed by: </strong>
+              {props.borrowedBy.firstName + " " + props.borrowedBy.lastName}
+            </p>
+          )}
           {props.userEmail !== localStorage.getItem("currentUserEmail") && (
             <Button
               type="primary"
@@ -123,7 +129,7 @@ function InstrumentCard(props) {
               {status === 1 ? "Return" : "Borrow"}
             </Button>
           )}
-        </Flex>
+        </div>
       </Flex>
       <Image
         src={props.picture}

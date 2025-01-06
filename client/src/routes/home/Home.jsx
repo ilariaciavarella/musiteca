@@ -30,25 +30,27 @@ function Home() {
   const { posts } = useLoaderData();
   const navigation = useNavigation();
 
-  const postItems = posts.map((post) => {
-    return (
-      <InstrumentCard
-        key={post.postId}
-        postId={post.postId}
-        userName={`${post.author.firstName} ${post.author.lastName}`}
-        userEmail={post.author.email}
-        userLocation={post.author.location}
-        creationDate={post.creationDate}
-        picture={post.image}
-        body={post.body}
-        instrument={post.instrument}
-        brand={post.brand}
-        age={post.age}
-        available={post.available}
-        borrowedBy={post.borrowedBy}
-      />
-    );
-  });
+  const postItems = posts
+    .sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate))
+    .map((post) => {
+      return (
+        <InstrumentCard
+          key={post.postId}
+          postId={post.postId}
+          userName={`${post.author.firstName} ${post.author.lastName}`}
+          userEmail={post.author.email}
+          userLocation={post.author.location}
+          creationDate={post.creationDate}
+          picture={post.image}
+          body={post.body}
+          instrument={post.instrument}
+          brand={post.brand}
+          age={post.age}
+          available={post.available}
+          borrowedBy={post.borrowedBy}
+        />
+      );
+    });
 
   return (
     <main className="main-container">

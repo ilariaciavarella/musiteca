@@ -47,8 +47,12 @@
   }
 }
 
-.post-actions {
+.borrow-action {
   margin-top: spacing-var.$space-md;
+
+  p {
+    font-size: text-var.$text-small;
+  }
 }
 
 button.borrowed-btn {
