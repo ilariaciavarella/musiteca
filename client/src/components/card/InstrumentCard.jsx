@@ -109,7 +109,7 @@ function InstrumentCard(props) {
           )}
         </div>
         <div className="borrow-action">
-          {props.borrowedBy && (
+          {props.borrowedBy && status !== 0 && (
             <p>
               <strong>Borrowed by: </strong>
               {props.borrowedBy.firstName + " " + props.borrowedBy.lastName}
