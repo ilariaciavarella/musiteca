@@ -13,7 +13,7 @@ function Auth() {
 
   function handleModalConfirm() {
     setIsModalOpen(false);
-    navigate("auth/login");
+    navigate("login");
   }
 
   function handleModalCancel() {
