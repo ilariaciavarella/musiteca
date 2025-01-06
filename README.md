@@ -45,27 +45,27 @@ Musiteca provides an intuitive flow for users to lend and borrow instruments. He
 1. **Register to the platform:**  
    Create an account by filling in your details.
 
-   ![Sign up page](readme_images/musiteca-signup.png)
+   ![Sign up page](assets/musiteca-signup.png)
 
 2. **Sign in to your account:**  
    Log in using the email and password you registered with.
 
-   ![Login page](readme_images/musiteca-login.png)
+   ![Login page](assets/musiteca-login.png)
 
 3. **Explore the home page:**  
    Browse through the community’s shared instruments.
 
-   ![Home page](readme_images/musiteca-home.png)
+   ![Home page](assets/musiteca-home.png)
 
 4. **Lend an instrument:**  
    Share an instrument by filling in the form with its details and photo.
 
-   ![Form to share post](readme_images/musiteca-post.png)
+   ![Form to share post](assets/musiteca-post.png)
 
 5. **View your shared posts:**  
    Track the instruments you've shared in the _Lending_ section.
 
-   ![Lending page](readme_images/musiteca-lending.png)
+   ![Lending page](assets/musiteca-lending.png)
 
 6. **Reserve an instrument:**  
    Interested in borrowing? Click the _Borrow_ button on a post to reserve the instrument.
@@ -73,7 +73,7 @@ Musiteca provides an intuitive flow for users to lend and borrow instruments. He
 7. **Manage your borrowed instruments:**  
    Keep track of the instruments you've reserved in the _Borrowed_ section.
 
-   ![Borrowed page](readme_images/musiteca-borrowed.png)
+   ![Borrowed page](assets/musiteca-borrowed.png)
 
 ---
 
